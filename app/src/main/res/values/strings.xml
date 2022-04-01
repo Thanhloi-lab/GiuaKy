@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">GiuaKy</string>
+    <string name="cong_nhan">Công nhân</string>
+    <string name="san_pham">Sản phẩm</string>
+    <string name="thong_ke">Thống kê</string>
+    <string name="cham_cong">Chấm công</string>
+
+    <string name="add">Thêm</string>
+    <string name="edit">Sửa</string>
+    <string name="delete">Xóa</string>
+    <string name="worker_id">Mã công nhân:</string>
+    <string name="worker_firstName">Họ:</string>
+    <string name="worker_lastName">Tên:</string>
+    <string name="factory_id">Phân xưởng:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_cong_nhan" android:title="@string/cong_nhan" android:icon="@drawable/ic_cong_nhan" />
+    <item android:id="@+id/menu_san_pham" android:title="@string/san_pham" android:icon="@drawable/ic_san_pham"/>
+    <item android:id="@+id/menu_cham_cong" android:title="@string/cham_cong" android:icon="@drawable/ic_cham_cong"/>
+    <item android:id="@+id/menu_thong_ke" android:title="@string/thong_ke" android:icon="@drawable/ic_thong_ke"/>
+</menu>

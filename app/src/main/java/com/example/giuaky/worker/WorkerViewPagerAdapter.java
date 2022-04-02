@@ -25,8 +25,8 @@ public class WorkerViewPagerAdapter extends FragmentStatePagerAdapter {
         switch (position){
             case 0:
                 return new ListWorkerFragment();
-            case 1:
-                return new UpdateWorkerFragment();
+//            case 1:
+//                return new UpdateWorkerFragment();
         }
         return new ListWorkerFragment();
     }

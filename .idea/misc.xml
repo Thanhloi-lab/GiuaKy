@@ -3,16 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_back.xml" value="0.187" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_delete.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_edit.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_save.xml" value="0.1285" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/header.xml" value="0.2345" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/search_editText.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/sort_worker.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_add.xml" value="0.228" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/header_update_worker.xml" value="0.187" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_cham_cong.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_chamcong.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_cong_nhan.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_congnhan.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_group_3.xml" value="0.187" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_plus_circle.xml" value="0.228" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_san_pham.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_search.xml" value="0.194" />
@@ -23,6 +28,7 @@
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/spinner_background.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/worker_box.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_update_worker.xml" value="0.33695652173913043" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.33" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_product.xml" value="0.1762917933130699" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_statistic.xml" value="0.1762917933130699" />

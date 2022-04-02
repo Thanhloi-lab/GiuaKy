@@ -3,12 +3,12 @@ package com.example.giuaky.worker;
 import java.io.Serializable;
 
 public class Worker implements Serializable {
-    private String maCN;
+    private int maCN;
     private String hoCN;
     private String tenCN;
-    private String phanXuong;
+    private int phanXuong;
 
-    public Worker(String maCN, String hoCN, String tenCN, String phanXuong) {
+    public Worker(int maCN, String hoCN, String tenCN, int phanXuong) {
         this.maCN = maCN;
         this.hoCN = hoCN;
         this.tenCN = tenCN;
@@ -18,11 +18,11 @@ public class Worker implements Serializable {
     public Worker() {
     }
 
-    public String getMaCN() {
+    public int getMaCN() {
         return maCN;
     }
 
-    public void setMaCN(String maCN) {
+    public void setMaCN(int maCN) {
         this.maCN = maCN;
     }
 
@@ -42,11 +42,11 @@ public class Worker implements Serializable {
         this.tenCN = tenCN;
     }
 
-    public String getPhanXuong() {
+    public int getPhanXuong() {
         return phanXuong;
     }
 
-    public void setPhanXuong(String phanXuong) {
+    public void setPhanXuong(int phanXuong) {
         this.phanXuong = phanXuong;
     }
 }

@@ -1,9 +1,8 @@
 package com.example.giuaky.worker;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -16,8 +15,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.giuaky.Constant;
 import com.example.giuaky.Database.WorkerDatabase;
 import com.example.giuaky.R;
+import com.example.giuaky.template.UpdatePage;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class ListWorkerFragment extends Fragment {
     WorkerAdapter adapter;
     ArrayList<Worker> data = new ArrayList<>();
     private WorkerDatabase db;
+    private UpdatePage editPage = new UpdatePage("THÊM CÔNG NHÂN", "Sửa", Constant.PAGE_EIDT_WORKER);
+    private UpdatePage createPage = new UpdatePage("SỬA CÔNG NHÂN", "Lưu", Constant.PAGE_CREATE_WORKER);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,8 +59,9 @@ public class ListWorkerFragment extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.add(new Worker("1", "Cao", "Loi", "1"));
-                show();
+                Intent intent = new Intent(view.getContext(), UpdateWorkerActivity.class);
+                intent.putExtra("page", createPage);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -101,5 +105,9 @@ public class ListWorkerFragment extends Fragment {
         data.clear();
         data.addAll(db.read());
         adapter.notifyDataSetChanged();
+    }
+
+    private String getStringResource(int string){
+        return getResources().getString(string);
     }
 }

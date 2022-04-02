@@ -20,7 +20,7 @@ public class WorkerDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table CONGNHAN (MACN text, HOCN text, TENCN text, PHANXUONG text)";
+        String sql = "Create table CONGNHAN (MACN integer primary key autoincrement, HOCN text, TENCN text, PHANXUONG integer)";
         sqLiteDatabase.execSQL(sql);
     }
 
@@ -30,24 +30,39 @@ public class WorkerDatabase extends SQLiteOpenHelper {
     }
 
     public void add(Worker worker){
-        String sql = "insert into CONGNHAN values(?,?,?,?)";
+        String sql = "insert into CONGNHAN values(?,?,?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{worker.getMaCN(), worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()});
+        database.execSQL(sql, new String[]{worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()+""});
         database.close();
     }
 
-    public void edit(Worker worker){
+    public void edit(Worker worker, int maCN){
         String sql = "update CONGNHAN set HOCN=?, TENCN=?, PHANXUONG=? where MACN=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong(), worker.getMaCN()});
+        database.execSQL(sql, new String[]{worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()+"", maCN+""});
         database.close();
     }
 
     public void delete(Worker worker){
         String sql = "delete from tbMonHoc where MACN=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{worker.getMaCN()});
+        database.execSQL(sql, new String[]{worker.getMaCN()+""});
         database.close();
+    }
+
+    public Worker getById(int maCN){
+        String sql = "select * from CONGNHAN where MACN = ?";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, new String[]{maCN+""});
+        Worker worker = new Worker();
+        if(cursor.moveToFirst()){
+            worker.setMaCN(cursor.getInt(0));
+            worker.setHoCN(cursor.getString(1));
+            worker.setTenCN(cursor.getString(2));
+            worker.setPhanXuong(cursor.getInt(3));
+        }
+        database.close();
+        return worker;
     }
 
     public ArrayList<Worker> read(){
@@ -58,13 +73,14 @@ public class WorkerDatabase extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 Worker worker = new Worker();
-                worker.setMaCN(cursor.getString(0));
+                worker.setMaCN(cursor.getInt(0));
                 worker.setHoCN(cursor.getString(1));
                 worker.setTenCN(cursor.getString(2));
-                worker.setPhanXuong(cursor.getString(3));
+                worker.setPhanXuong(cursor.getInt(3));
                 data.add(worker);
             }while (cursor.moveToNext());
         }
+        database.close();
         return data;
     }
 }

@@ -19,6 +19,17 @@
     <string name="titleCreateWorker">THÊM CÔNG NHÂN</string>
     <string name="titleUpdateWorker">SỬA CÔNG NHÂN</string>
 
+    <string name="searchWorker">Tìm công nhân</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //worker sort items
+    <string-array name="worker_sort_item">
+        <item>KHÔNG XẾP</item>
+        <item>MÃ CÔNG NHÂN</item>
+        <item>HỌ</item>
+        <item>TÊN</item>
+        <item>PHÂN XƯỞNG</item>
+    </string-array>
 </resources>

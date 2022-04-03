@@ -1,21 +1,40 @@
 package com.example.giuaky.worker;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.giuaky.Constant;
+import com.example.giuaky.Database.WorkerDatabase;
+import com.example.giuaky.MainActivity;
 import com.example.giuaky.R;
+import com.example.giuaky.template.UpdatePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +45,10 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
     int resource;
     ArrayList<Worker> data;
     ArrayList<Worker> dataOld;
+    View viewNow;
+    ViewGroup parent;
+
+    private UpdatePage editPage = new UpdatePage("THÊM CÔNG NHÂN", "Sửa", Constant.PAGE_EIDT_WORKER);
 
     public class WorkerViewHolder extends RecyclerView.ViewHolder{
 
@@ -57,8 +80,9 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
     @NonNull
     @Override
     public WorkerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.worker_info_item, parent, false);
-        return new WorkerViewHolder(view);
+        viewNow = LayoutInflater.from(parent.getContext()).inflate(R.layout.worker_info_item, parent, false);
+        this.parent = parent;
+        return new WorkerViewHolder(viewNow);
     }
 
     @Override
@@ -70,6 +94,68 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
         holder.tvHo.setText(wk.getHoCN());
         holder.tvTen.setText(wk.getTenCN());
         holder.tvPhanXuong.setText(wk.getPhanXuong()+"");
+
+        holder.btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.WORKER, wk);
+                bundle.putSerializable(Constant.PAGE, editPage);
+                Navigation.findNavController(viewNow).navigate(R.id.action_listWorker_to_updateWorker, bundle);
+            }
+        });
+
+
+
+        holder.btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(viewNow.getContext());
+//                builder.setMessage("sign out");
+//                builder.setTitle("sign out");
+//                builder.setCancelable(false);
+//                builder.setView(R.layout.delete_worker_dialog);
+
+                final Dialog alert=new Dialog(viewNow.getContext());
+                alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                alert.setContentView(R.layout.delete_worker_dialog);
+
+                Window window=alert.getWindow();
+                if(window==null)
+                {
+                    return;
+                }
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+                WindowManager.LayoutParams winLayoutParams=window.getAttributes();
+                winLayoutParams.gravity = Gravity.CENTER;
+                window.setAttributes(winLayoutParams);
+
+                Button btnCancel = alert.findViewById(R.id.btn_dialog_delete_worker);
+                Button btnDelete = alert.findViewById(R.id.btn_dialog_cancel_worker);
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alert.dismiss();
+                    }
+                });
+
+                btnDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(parent.getContext(), "Xóa thành công", Toast.LENGTH_LONG).show();
+                        WorkerDatabase db = new WorkerDatabase(parent.getContext());
+                        db.delete(wk.getMaCN());
+                        dataOld = data = db.read();
+                        notifyDataSetChanged();
+                        alert.dismiss();
+                    }
+                });
+
+                alert.show();
+            }
+        });
     }
 
     @Override

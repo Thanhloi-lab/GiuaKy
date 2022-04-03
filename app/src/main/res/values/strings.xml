@@ -10,6 +10,8 @@
     <string name="delete">Xóa</string>
     <string name="back">Quay lại</string>
     <string name="save">Lưu</string>
+    <string name="yes">Có</string>
+    <string name="cancel">Hủy</string>
 
     <string name="worker_id">Mã công nhân:</string>
     <string name="worker_firstName">Họ:</string>

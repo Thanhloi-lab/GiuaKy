@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.giuaky.Constant;
@@ -33,12 +34,13 @@ import com.example.giuaky.template.UpdatePage;
 
 import java.util.ArrayList;
 
-public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerViewHolder> implements Filterable{
+public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerViewHolder> implements Filterable {
     Context context;
     int resource;
     ArrayList<Worker> data;
     ArrayList<Worker> dataOld;
     private WorkerDatabase db;
+    ViewGroup parent;
     WorkerAdapter adapter;
 
     public class WorkerViewHolder extends RecyclerView.ViewHolder{
@@ -79,7 +81,7 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
     @Override
     public WorkerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.worker_info_item, parent, false);
-
+        this.parent=parent;
         return new WorkerViewHolder(view);
     }
 
@@ -109,7 +111,9 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
         holder.btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 openDeleteDialog(Gravity.CENTER,wk);
+
             }
         });
     }
@@ -145,8 +149,11 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
         btnCo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db=new WorkerDatabase(context);
+                db=new WorkerDatabase(parent.getContext());
                 db.delete(worker);
+                data=dataOld=db.read();
+                notifyDataSetChanged();
+
                 dialog.dismiss();
             }
         });

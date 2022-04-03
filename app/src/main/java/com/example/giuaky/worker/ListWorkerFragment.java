@@ -30,11 +30,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ListWorkerFragment extends Fragment {
-    RecyclerView rDanhSach;
+    public RecyclerView rDanhSach;
     Spinner spnSort;
     SearchView svWorker;
     Button btnAdd;
     View view;
+
 
     WorkerAdapter adapter;
     ArrayList<Worker> data = new ArrayList<>();
@@ -67,19 +68,35 @@ public class ListWorkerFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (spnSort.getSelectedItem().toString()){
                     case "MÃ CÔNG NHÂN":{
+                        data=db.read();
                         Collections.sort(data,Worker.WorkerIdComparator);
+
+                        adapter = new WorkerAdapter(view.getContext(),R.layout.worker_info_item,data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "HỌ":{
+                        data=db.read();
                         Collections.sort(data,Worker.WorkerFirstNameComparator);
+
+                        adapter = new WorkerAdapter(view.getContext(),R.layout.worker_info_item,data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "TÊN":{
+                        data=db.read();
                         Collections.sort(data,Worker.WorkerLastNameComparator);
+
+                        adapter = new WorkerAdapter(view.getContext(),R.layout.worker_info_item,data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "PHÂN XƯỞNG":{
+                        data=db.read();
                         Collections.sort(data,Worker.WorkerFactoryIdComparator);
+
+                        adapter = new WorkerAdapter(view.getContext(),R.layout.worker_info_item,data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     default:{
@@ -156,12 +173,6 @@ public class ListWorkerFragment extends Fragment {
         adapter=new WorkerAdapter(view.getContext(), R.layout.worker_info_item,data);
         rDanhSach.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        show();
     }
 
     @Override

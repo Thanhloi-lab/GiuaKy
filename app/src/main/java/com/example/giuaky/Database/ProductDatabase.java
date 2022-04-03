@@ -16,7 +16,6 @@ public class ProductDatabase extends SQLiteOpenHelper {
     public ProductDatabase(@Nullable Context context) {
         super(context, "CHAMCONG", null, 1);
     }
-    private String temp;
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {

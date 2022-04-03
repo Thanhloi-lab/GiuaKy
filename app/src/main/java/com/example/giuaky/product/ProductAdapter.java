@@ -139,6 +139,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             public void onClick(View view) {
                 db=new ProductDatabase(context);
                 db.deleteProduct(product);
+                data=dataOld=db.readProduct();
+                notifyDataSetChanged();
                 dialog.dismiss();
             }
         });

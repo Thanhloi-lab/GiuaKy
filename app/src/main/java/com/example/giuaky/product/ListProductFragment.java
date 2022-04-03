@@ -76,16 +76,23 @@ public class ListProductFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (spnSortSP.getSelectedItem().toString()){
                     case "MÃ SẢN PHẨM":{
+                        dataSP=dbSP.readProduct();
                         Collections.sort(dataSP, Product.ProductIdComparator);
+                        adapterSP=new ProductAdapter(view.getContext(),R.layout.product_info_item,dataSP);
+                        rvDanhSachSP.setAdapter(adapterSP);
                         break;
                     }
                     case "TÊN SẢN PHẨM":{
+                        dataSP=dbSP.readProduct();
                         Collections.sort(dataSP, Product.ProductNameComparator);
-                        break;
+                        adapterSP=new ProductAdapter(view.getContext(),R.layout.product_info_item,dataSP);
+                        rvDanhSachSP.setAdapter(adapterSP);
                     }
                     case "ĐƠN GIÁ":{
+                        dataSP=dbSP.readProduct();
                         Collections.sort(dataSP, Product.ProductPriceComparator);
-                        break;
+                        adapterSP=new ProductAdapter(view.getContext(),R.layout.product_info_item,dataSP);
+                        rvDanhSachSP.setAdapter(adapterSP);
                     }
                     default:{
 
@@ -151,19 +158,13 @@ public class ListProductFragment extends Fragment {
     private void showList() {
         dataSP.clear();
         dataSP.addAll(dbSP.readProduct());
-        //adapterSP.notifyDataSetChanged();
-
         adapterSP=new ProductAdapter(view.getContext(), R.layout.product_info_item,dataSP);
         rvDanhSachSP.setAdapter(adapterSP);
 
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        showList();
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

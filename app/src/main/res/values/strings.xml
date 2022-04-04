@@ -4,6 +4,8 @@
     <string name="san_pham">Sản phẩm</string>
     <string name="thong_ke">Thống kê</string>
     <string name="cham_cong">Chấm công</string>
+    <string name="thanh_pham">Thành phẩm</string>
+    <string name="phe_pham">Phế phẩm</string>
 
     <string name="add">Thêm</string>
     <string name="edit">Sửa</string>
@@ -22,6 +24,12 @@
     <string name="titleUpdateWorker">SỬA CÔNG NHÂN</string>
 
     <string name="searchWorker">Tìm công nhân</string>
+
+    <string name="factory">Nhà máy </string>
+    <string name="time_keeping_date">Ngày chấm công</string>
+    <string name="worker">Công nhân </string>
+    <string name="name">Họ tên:</string>
+    <string name="date">Ngày:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

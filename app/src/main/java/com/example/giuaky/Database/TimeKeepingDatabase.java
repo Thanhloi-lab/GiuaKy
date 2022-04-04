@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 
 public class TimeKeepingDatabase extends SQLiteOpenHelper {
     public TimeKeepingDatabase(@Nullable Context context) {
-        super(context, "CHAMCONG", null, 1 );
+        super(context,"CHAMCONG", null, 1 );
     }
 
 

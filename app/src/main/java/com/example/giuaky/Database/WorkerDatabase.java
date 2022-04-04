@@ -15,7 +15,7 @@ public class WorkerDatabase extends SQLiteOpenHelper {
 
 
     public WorkerDatabase(@Nullable Context context) {
-        super(context, "CHAMCONG", null, 1 );
+        super(context, "CHAMCONG", null, 1);
     }
 
     @Override

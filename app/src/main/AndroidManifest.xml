@@ -17,9 +17,6 @@
             android:name=".statistic.TimeKeepingDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".TimeKeepingDetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".statistic.WorkerTimekeepingActivity"
             android:exported="false"
             android:label="@string/title_activity_timekeeping"
@@ -29,6 +26,9 @@
             android:exported="false" />
         <activity
             android:name=".worker.UpdateWorkerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".product.UpdateProduct"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

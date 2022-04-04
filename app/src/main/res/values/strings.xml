@@ -60,4 +60,19 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="product_sort_item">
+        <item>MÃ SẢN PHẨM</item>
+        <item>TÊN SẢN PHẨM</item>
+        <item>ĐƠN GIÁ</item>
+    </string-array>
+
+
+    <string name="product_id">Mã sản phẩm:</string>
+    <string name="product_name">Tên sản phẩm:</string>
+    <string name="product_price">Đơn giá:</string>
+    <string name="titleCreateProduct">THÊM SẢN PHẨM</string>
+    <string name="titleUpdateProduct">SỬA SẢN PHẨM</string>
+    <string name="searchProduct">Tìm sản phẩm</string>
+    <string name="message_alert">Bạn không được để trống thông tin!!!</string>
 </resources>

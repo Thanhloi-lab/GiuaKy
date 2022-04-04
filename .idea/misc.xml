@@ -9,6 +9,7 @@
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_save.xml" value="0.1285" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/header.xml" value="0.2345" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/search_editText.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/search_timekeeping_detail.xml" value="0.179" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/sort_worker.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_add.xml" value="0.228" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/header_update_worker.xml" value="0.187" />
@@ -26,16 +27,21 @@
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_vector__1_.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/search_textedit.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/spinner_background.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/time_keeping_box.xml" value="0.179" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/worker_box.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_update_worker.xml" value="0.33695652173913043" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/add_time_keeping.xml" value="0.24947916666666667" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_time_keeping.xml" value="0.25364583333333335" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_time_keeping_detail.xml" value="0.25" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.3144278606965174" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_product.xml" value="0.1762917933130699" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_statistic.xml" value="0.1762917933130699" />
-        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_time_keeping.xml" value="0.12105263157894737" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_time_keeping.xml" value="0.33" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_update_worker.xml" value="0.36666666666666664" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_worker.xml" value="0.33" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/linear.xml" value="0.36666666666666664" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/time_keeping_detail_item.xml" value="0.25364583333333335" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/worker_info_item.xml" value="0.36666666666666664" />
         <entry key="..\:/GiuaKy/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
         <entry key="..\:/GiuaKy/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />

@@ -97,11 +97,6 @@
             android:layout_weight="1"
            >
         </ListView>
-
-
-
-
-
     </LinearLayout>
 
 </LinearLayout>

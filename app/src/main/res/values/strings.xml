@@ -1,0 +1,78 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">GiuaKy</string>
+    <string name="cong_nhan">Công nhân</string>
+    <string name="san_pham">Sản phẩm</string>
+    <string name="thong_ke">Thống kê</string>
+    <string name="cham_cong">Chấm công</string>
+
+    <string name="add">Thêm</string>
+    <string name="edit">Sửa</string>
+    <string name="delete">Xóa</string>
+    <string name="back">Quay lại</string>
+    <string name="save">Lưu</string>
+    <string name="yes">Có</string>
+    <string name="cancel">Hủy</string>
+
+    <string name="worker_id">Mã công nhân:</string>
+    <string name="worker_firstName">Họ:</string>
+    <string name="worker_lastName">Tên:</string>
+    <string name="factory_id">Phân xưởng:</string>
+
+    <string name="titleCreateWorker">THÊM CÔNG NHÂN</string>
+    <string name="titleUpdateWorker">SỬA CÔNG NHÂN</string>
+
+    <string name="searchWorker">Tìm công nhân</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Statistic String  -->
+    <string name="goToChart">Thống kê</string>
+    <string name="print_salary">In bảng lương</string>
+    <string name="salary_detail">Chi tiết lương</string>
+    <string name="ma_cham_cong">Mã chấm công:</string>
+    <string name="ngay_cham_cong">Ngày chấm công:</string>
+    <string name="tong_luong">Tổng lương:</string>
+    <string name="chi_tiet_cham_cong">Chi tiết chấm công</string>
+    <string name="ma_san_pham">Mã sản phẩm:</string>
+    <string name="ten_san_pham">Tên sản phẩm:</string>
+    <string name="don_gia">Đơn giá:</string>
+    <string name="thanh_pham">Thành phẩm:</string>
+    <string name="phe_pham">Phế phẩm:</string>
+    <string name="tong_tien">Tổng tiền:</string>
+    <string name="cong_nhan_text">Công nhân:</string>
+    <string name="print_message">Bạn có muốn in bảng lương của công nhân:</string>
+    <string name="cancel_print">Không</string>
+    //worker sort items
+    <string-array name="worker_sort_item">
+        <item>KHÔNG XẾP</item>
+        <item>MÃ CÔNG NHÂN</item>
+        <item>HỌ</item>
+        <item>TÊN</item>
+        <item>PHÂN XƯỞNG</item>
+    </string-array>
+    <string name="title_activity_timekeeping">TimekeepingActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="product_sort_item">
+        <item>MÃ SẢN PHẨM</item>
+        <item>TÊN SẢN PHẨM</item>
+        <item>ĐƠN GIÁ</item>
+    </string-array>
+
+
+    <string name="product_id">Mã sản phẩm:</string>
+    <string name="product_name">Tên sản phẩm:</string>
+    <string name="product_price">Đơn giá:</string>
+    <string name="titleCreateProduct">THÊM SẢN PHẨM</string>
+    <string name="titleUpdateProduct">SỬA SẢN PHẨM</string>
+    <string name="searchProduct">Tìm sản phẩm</string>
+    <string name="message_alert">Bạn không được để trống thông tin!!!</string>
+</resources>

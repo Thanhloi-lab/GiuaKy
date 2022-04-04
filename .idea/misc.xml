@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_back.xml" value="0.187" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_delete.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_edit.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/btn_save.xml" value="0.1285" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/header.xml" value="0.2345" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/search_editText.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/sort_worker.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_add.xml" value="0.228" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/header_update_worker.xml" value="0.187" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_cham_cong.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_chamcong.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_cong_nhan.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_congnhan.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_group_3.xml" value="0.187" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_plus_circle.xml" value="0.228" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_san_pham.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_search.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_thong_ke.xml" value="0.2315" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_vector.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_vector__1_.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/search_textedit.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/spinner_background.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/drawable/worker_box.xml" value="0.194" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_update_worker.xml" value="0.33695652173913043" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.3144278606965174" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_product.xml" value="0.1762917933130699" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_statistic.xml" value="0.1762917933130699" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_time_keeping.xml" value="0.12105263157894737" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_update_worker.xml" value="0.36666666666666664" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_worker.xml" value="0.33" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/linear.xml" value="0.36666666666666664" />
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/worker_info_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/GiuaKy/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/GiuaKy/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/activity_update_product.xml" value="0.40217391304347827" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/activity_update_worker.xml" value="0.40217391304347827" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/delete_product.xml" value="0.40217391304347827" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/delete_worker_dialog.xml" value="0.1962962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/fragment_list_worker.xml" value="0.40217391304347827" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/fragment_worker.xml" value="0.40217391304347827" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GiuaKy-duy/app/src/main/res/layout/worker_info_item.xml" value="0.40217391304347827" />
+        <entry key="..\:/Users/duy/AndroidStudioProjects/GiuaKy/app/src/main/res/layout/activity_update_product.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/duy/AndroidStudioProjects/GiuaKy/app/src/main/res/layout/fragment_list_product.xml" value="0.1796875" />
+        <entry key="..\:/Users/duy/AndroidStudioProjects/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.1796875" />
+        <entry key="..\:/Users/duy/AndroidStudioProjects/GiuaKy/app/src/main/res/layout/fragment_product.xml" value="0.1796875" />
+        <entry key="..\:/Users/duy/AndroidStudioProjects/GiuaKy/app/src/main/res/layout/fragment_worker.xml" value="0.14130434782608695" />
+        <entry key="app/src/main/res/drawable-v24/btn_add1.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable-v24/btn_add_custom.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable-v24/btn_edit.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable-v24/header.xml" value="0.3575" />
+        <entry key="app/src/main/res/drawable-v24/ic_akar_icons_circle_alert.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable-v24/ic_edit.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable-v24/message_box.xml" value="0.174" />
+        <entry key="app/src/main/res/drawable/btn_add.xml" value="0.3575" />
+        <entry key="app/src/main/res/drawable/btn_back.xml" value="0.339" />
+        <entry key="app/src/main/res/drawable/btn_back1.xml" value="0.339" />
+        <entry key="app/src/main/res/drawable/btn_back_custom.xml" value="0.339" />
+        <entry key="app/src/main/res/drawable/btn_cancel.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/btn_cancel1.xml" value="0.2565" />
+        <entry key="app/src/main/res/drawable/btn_delete.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/btn_delete1.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/btn_delete_custom.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/charm_octagon-warning.xml" value="0.339" />
+        <entry key="app/src/main/res/drawable/delete_dialog.xml" value="0.339" />
+        <entry key="app/src/main/res/drawable/waring_icon.xml" value="0.339" />
+        <entry key="app/src/main/res/layout/activity_chart.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/activity_statistic_chart.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_statistic_worker_timekeeping.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_time_keeping_detail.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_timekeeping.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_update_product.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/activity_update_worker.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_worker_timekeeping.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/btn_back.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/btn_back_custom.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/delete_product.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/delete_worker_dialog.xml" value="0.27760416666666665" />
+        <entry key="app/src/main/res/layout/fragment_list_product.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/fragment_list_statistic.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_list_worker.xml" value="0.31574074074074077" />
+        <entry key="app/src/main/res/layout/fragment_product.xml" value="0.31574074074074077" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_statistic.xml" value="0.31574074074074077" />
+        <entry key="app/src/main/res/layout/fragment_statistic_list_worker_info.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_time_keeping.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_worker.xml" value="0.31574074074074077" />
+        <entry key="app/src/main/res/layout/message_box.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/print_report_dialog.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/product_info_item.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/statistic_time_keeping_detail_item.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/statistic_time_keeping_info.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/statistic_time_keeping_info_item.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/statistic_worker_info_item.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/worker_info_item.xml" value="0.35625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/worker_navigation"
+    app:startDestination="@id/listWorkerFragment">
+
+    <fragment
+        android:id="@+id/listWorkerFragment"
+        android:name="com.example.giuaky.worker.ListWorkerFragment"
+        android:label="fragment_list_worker"
+        tools:layout="@layout/fragment_list_worker" >
+        <action
+            android:id="@+id/action_listWorker_to_updateWorker"
+            app:destination="@id/updateWorkerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateWorkerFragment"
+        android:name="com.example.giuaky.worker.UpdateWorkerFragment"
+        android:label="fragment_update_worker"
+        tools:layout="@layout/activity_update_worker" >
+        <action
+            android:id="@+id/action_updateWorker_to_listWorker"
+            app:destination="@id/listWorkerFragment" />
+    </fragment>
+</navigation>

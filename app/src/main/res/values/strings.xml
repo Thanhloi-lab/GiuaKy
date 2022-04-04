@@ -21,6 +21,12 @@
 
     <string name="searchWorker">Tìm công nhân</string>
 
+    <string name="factory">Nhà máy </string>
+    <string name="time_keeping_date">Ngày chấm công</string>
+    <string name="worker">Công nhân </string>
+    <string name="name">Họ tên:</string>
+    <string name="date">Ngày:</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

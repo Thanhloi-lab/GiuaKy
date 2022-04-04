@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.giuaky.Database.StatisticDatabase;
 import com.example.giuaky.R;
-import com.example.giuaky.statistic.WorkerStatistic;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -32,21 +33,28 @@ public class ChartActivity extends AppCompatActivity {
     // array list for storing entries.
     ArrayList barEntriesArrayList;
 
-    ArrayList<WorkerStatistic> workerStatistics;
+    ArrayList<WorkerChartData> workerChartData;
 
+    Button backButton;
+
+    StatisticDatabase statisticDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chart);
+        setContentView(R.layout.activity_statistic_chart);
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // initializing variable for bar chart.
         barChart = findViewById(R.id.idBarChart);
+        backButton = findViewById(R.id.backButton);
 
-
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-
-
 
         // calling method to get bar entries.
         getBarEntries();
@@ -75,13 +83,11 @@ public class ChartActivity extends AppCompatActivity {
 
 
         XAxis xAxis = barChart.getXAxis();
-        xAxis.setLabelCount(workerStatistics.size());
+        xAxis.setLabelCount(workerChartData.size());
         xAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                System.out.println(value);
-                System.out.println(workerStatistics.get((int)value).getName());
-                return workerStatistics.get((int)value).getName();
+                return workerChartData.get((int)value).getName();
             }
         });
 
@@ -90,19 +96,17 @@ public class ChartActivity extends AppCompatActivity {
     private void getBarEntries() {
         barEntriesArrayList = new ArrayList<>();
         getWorkerData();
-        for(int i = 0; i<workerStatistics.size(); i++){
+        for(int i = 0; i< workerChartData.size(); i++){
 
-            barEntriesArrayList.add(new BarEntry((float)i, workerStatistics.get(i).getAmountOfProduct()));
+            barEntriesArrayList.add(new BarEntry((float)i, workerChartData.get(i).getAmountOfProduct()));
         }
     }
 
     private void getWorkerData(){
-        workerStatistics = new ArrayList<>();
-        // TODO: get data from database
-        workerStatistics.add(new WorkerStatistic("1","Khang",20));
-        workerStatistics.add(new WorkerStatistic("2","Loi",15));
-        workerStatistics.add(new WorkerStatistic("3","Duy",10));
-        workerStatistics.add(new WorkerStatistic("4","Hien",5));
+        workerChartData = new ArrayList<>();
+        statisticDatabase = new StatisticDatabase(this);
+        workerChartData.addAll(statisticDatabase.getCharData());
+
     }
 
 

@@ -7,12 +7,11 @@
     android:background="@color/backGround_color"
     tools:context=".fragment.WorkerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <fragment
+        android:id="@+id/statisticListFragment"
+        android:name="com.example.giuaky.statistic.ListStatisticFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="statistic fragment"
-        android:gravity="center_horizontal"
-        android:textColor="@color/black"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

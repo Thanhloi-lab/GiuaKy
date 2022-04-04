@@ -23,7 +23,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/worker_id"
+                    android:text="@string/ma_cham_cong"
                     android:textStyle="bold"
                     android:textSize="16dp"
                     android:textColor="@color/text_bold"/>
@@ -44,12 +44,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/worker_firstName"
+                    android:text="@string/ngay_cham_cong"
                     android:textStyle="bold"
                     android:textSize="16dp"
                     android:textColor="@color/text_bold"/>
                 <TextView
-                    android:id="@+id/tvFirstName"
+                    android:id="@+id/ngayChamCongTextView"
                     android:paddingHorizontal="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,12 +64,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/worker_lastName"
+                    android:text="@string/tong_luong"
                     android:textStyle="bold"
                     android:textSize="16dp"
                     android:textColor="@color/text_bold"/>
                 <TextView
-                    android:id="@+id/tvLastName"
+                    android:id="@+id/tongLuongTextView"
                     android:paddingHorizontal="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,26 +78,7 @@
                     android:textColor="@color/text_bold"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/factory_id"
-                    android:textStyle="bold"
-                    android:textSize="16dp"
-                    android:textColor="@color/text_bold"/>
-                <TextView
-                    android:id="@+id/tvFactoryId"
-                    android:paddingHorizontal="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="16dp"
-                    android:textColor="@color/text_bold"/>
-            </LinearLayout>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -105,25 +86,16 @@
             android:layout_gravity="right"
             android:paddingTop="5dp"
             android:paddingRight="28dp">
+
             <Button
-                android:id="@+id/printSalaryButton"
-                android:layout_width="70dp"
-                android:layout_height="20dp"
-                android:background="@drawable/btn_edit"
-                android:textSize="14dp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:text="@string/print_salary"
-                android:layout_marginRight="10dp"/>
-            <Button
-                android:id="@+id/salaryDetailButton"
+                android:id="@+id/time_keeping_detail_button"
                 android:layout_width="180dp"
                 android:layout_height="20dp"
-                android:background="@drawable/btn_delete"
+                android:background="@drawable/btn_add"
                 android:textSize="14dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="@string/salary_detail"/>
+                android:text="@string/chi_tiet_cham_cong"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -106,24 +106,24 @@
             android:paddingTop="5dp"
             android:paddingRight="28dp">
             <Button
-                android:id="@+id/btnEditWorker"
-                android:layout_width="70dp"
+                android:id="@+id/printSalaryButton"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:background="@drawable/btn_edit"
                 android:textSize="14dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="@string/edit"
+                android:text="@string/print_salary"
                 android:layout_marginRight="10dp"/>
             <Button
-                android:id="@+id/btnDeleteWorker"
-                android:layout_width="70dp"
+                android:id="@+id/salaryDetailButton"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:background="@drawable/btn_delete"
                 android:textSize="14dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="@string/delete"/>
+                android:text="@string/salary_detail"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

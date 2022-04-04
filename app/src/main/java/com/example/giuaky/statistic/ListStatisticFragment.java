@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.Spinner;
 
 import com.example.giuaky.Constant;
 import com.example.giuaky.Database.WorkerDatabase;
@@ -23,7 +22,7 @@ import com.example.giuaky.worker.Worker;
 import java.util.ArrayList;
 
 
-public class ListStatistic extends Fragment {
+public class ListStatisticFragment extends Fragment {
 
     RecyclerView rDanhSach;
 
@@ -35,8 +34,7 @@ public class ListStatistic extends Fragment {
     ArrayList<Worker> data = new ArrayList<>();
     ArrayList<Worker> dataOld = new ArrayList<>();
     private WorkerDatabase db;
-    private UpdatePage editPage = new UpdatePage("THÊM CÔNG NHÂN", "Sửa", Constant.PAGE_EIDT_WORKER);
-    private UpdatePage createPage = new UpdatePage("SỬA CÔNG NHÂN", "Lưu", Constant.PAGE_CREATE_WORKER);
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,20 +43,16 @@ public class ListStatistic extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list_statistic, container, false);
+        view = inflater.inflate(R.layout.fragment_statistic_list_worker_info, container, false);
+        init(view);
         setControl(view);
         setEvent(view);
-//        init(view);
+
         return view;
     }
 
     private void setEvent(View view) {
-        data.add(new Worker(1, "G", "Loi", 1));
-        data.add(new Worker(2, "H", "Loi1", 2));
-        data.add(new Worker(3, "B", "Loi2", 3));
-        data.add(new Worker(4, "X", "Loi3", 10));
-        data.add(new Worker(5, "W", "Loi4", 5));
-        data.add(new Worker(6, "A", "Loi5", 6));
+
 
         dataOld.addAll(data);
         adapter = new StatisticWorkerAdapter(getActivity(),data);

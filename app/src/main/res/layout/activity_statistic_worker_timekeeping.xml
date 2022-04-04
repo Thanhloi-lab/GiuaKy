@@ -25,15 +25,28 @@
             android:text="@string/back"
             android:textColor="#ccc"
             android:textSize="12dp" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/cong_nhan_text"/>
+           <TextView
+               android:id="@+id/tenCongNhanTextView"
+               android:layout_gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+              />
+       </LinearLayout>
     </LinearLayout>
 
     <ListView
-        android:layout_width="wrap_content"
+        android:id="@+id/worker_timekeeping_list_view"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="test"/>
+
 </LinearLayout>

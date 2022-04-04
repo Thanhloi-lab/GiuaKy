@@ -6,37 +6,40 @@
     android:background="@drawable/delete_dialog"
     android:layout_margin="12dp">
 
-    <LinearLayout
-        android:layout_width="2dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/ic_icon_park_outline_caution" />
-    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textStyle="bold"
-            android:textSize="14dp"
-            android:text="Bạn có chắc chắn muốn xóa công nhân có id=1?"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:text="@string/print_message"
 
-            android:id="@+id/tvAlertWorkerDelete"/>
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:id="@+id/maCongNhanTextView"
+                />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,18 +47,18 @@
             android:layout_margin="10dp">
 
             <Button
-                android:id="@+id/btnCheckDeleteWorker"
-                android:layout_width="70dp"
+                android:id="@+id/print_report_button"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:background="@drawable/btn_delete_custom"
-                android:text="@string/yes"
+                android:background="@drawable/btn_edit"
+                android:text="@string/print_salary"
                 android:textColor="@color/white"
                 android:layout_marginRight="10dp"
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btnCancelWorker"
+                android:id="@+id/cancel_print_button"
                 android:layout_width="70dp"
                 android:layout_height="20dp"
                 android:background="@drawable/btn_cancel_custom"

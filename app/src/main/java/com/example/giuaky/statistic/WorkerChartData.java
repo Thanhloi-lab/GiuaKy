@@ -1,25 +1,15 @@
 package com.example.giuaky.statistic;
 
-public class WorkerStatistic {
-    private String id;
+public class WorkerChartData {
     private String name;
     private int amountOfProduct;
 
-    public WorkerStatistic(String id, String name, int amountOfProduct) {
-        this.id = id;
+    public WorkerChartData(String id, String name, int amountOfProduct) {
         this.name = name;
         this.amountOfProduct = amountOfProduct;
     }
 
-    public WorkerStatistic() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public WorkerChartData() {
     }
 
     public String getName() {

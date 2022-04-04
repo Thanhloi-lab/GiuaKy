@@ -11,6 +11,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.giuaky.fragment.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
 
             @Override
@@ -79,18 +81,22 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.menu_cong_nhan:{
                         viewPager.setCurrentItem(0);
+                        bottomNavigationView.setVisibility(View.VISIBLE);
                         break;
                     }
                     case R.id.menu_san_pham:{
                         viewPager.setCurrentItem(1);
+                        bottomNavigationView.setVisibility(View.VISIBLE);
                         break;
                     }
                     case R.id.menu_cham_cong:{
                         viewPager.setCurrentItem(2);
+                        bottomNavigationView.setVisibility(View.VISIBLE);
                         break;
                     }
                     case R.id.menu_thong_ke:{
                         viewPager.setCurrentItem(3);
+                        bottomNavigationView.setVisibility(View.VISIBLE);
                         break;
                     }
                 }

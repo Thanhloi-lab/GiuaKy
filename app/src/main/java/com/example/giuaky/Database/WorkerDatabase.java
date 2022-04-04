@@ -20,7 +20,7 @@ public class WorkerDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table CONGNHAN (MACN integer primary key autoincrement, HOCN text, TENCN text, PHANXUONG integer)";
+        String sql = "Create table CONGNHAN (MACN integer primary key, HOCN text, TENCN text, PHANXUONG integer)";
         sqLiteDatabase.execSQL(sql);
     }
 
@@ -29,10 +29,22 @@ public class WorkerDatabase extends SQLiteOpenHelper {
 
     }
 
+    public int getMaxId(){
+        String sql = "select MAX(MACN) from CONGNHAN";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        int max = 0;
+        if(cursor.moveToFirst()){
+            max = cursor.getInt(0);
+        }
+        database.close();
+        return max;
+    }
+
     public void add(Worker worker){
-        String sql = "insert into CONGNHAN values(?,?,?)";
+        String sql = "insert into CONGNHAN values(?, ?, ?, ?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()+""});
+        database.execSQL(sql, new String[]{worker.getMaCN()+"", worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()+""});
         database.close();
     }
 
@@ -43,10 +55,10 @@ public class WorkerDatabase extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void delete(Worker worker){
-        String sql = "delete from tbMonHoc where MACN=?";
+    public void delete(int maCN){
+        String sql = "delete from CONGNHAN where MACN=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{worker.getMaCN()+""});
+        database.execSQL(sql, new String[]{maCN+""});
         database.close();
     }
 

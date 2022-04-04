@@ -4,8 +4,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,11 +26,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.giuaky.Constant;
 import com.example.giuaky.Database.WorkerDatabase;
 import com.example.giuaky.R;
 import com.example.giuaky.template.UpdatePage;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -37,9 +45,8 @@ public class ListWorkerFragment extends Fragment {
 
     WorkerAdapter adapter;
     ArrayList<Worker> data = new ArrayList<>();
-    ArrayList<Worker> dataOld = new ArrayList<>();
     private WorkerDatabase db;
-    private UpdatePage editPage = new UpdatePage("THÊM CÔNG NHÂN", "Sửa", Constant.PAGE_EIDT_WORKER);
+
     private UpdatePage createPage = new UpdatePage("SỬA CÔNG NHÂN", "Lưu", Constant.PAGE_CREATE_WORKER);
 
     @Override
@@ -50,55 +57,68 @@ public class ListWorkerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list_worker, container, false);
+        Bundle bundle = this.getArguments();
+        if(bundle!=null){
+            if(bundle.containsKey("message")){
+                String message = bundle.getString("message");
+                Toast.makeText(view.getContext(), message, Toast.LENGTH_LONG).show();
+            }
+        }
+        init(view);
         setControl(view);
         setEvent(view);
-        init(view);
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        NavController navController = Navigation.findNavController(view);
+        navController.clearBackStack(R.id.listWorkerFragment);
+    }
+
     private void setEvent(View view) {
-        data.add(new Worker(1, "G", "Loi", 1));
-        data.add(new Worker(2, "H", "Loi1", 2));
-        data.add(new Worker(3, "B", "Loi2", 3));
-        data.add(new Worker(4, "X", "Loi3", 10));
-        data.add(new Worker(5, "W", "Loi4", 5));
-        data.add(new Worker(6, "A", "Loi5", 6));
-
-        dataOld.addAll(data);
-
         spnSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (spnSort.getSelectedItem().toString()){
                     case "MÃ CÔNG NHÂN":{
+                        data = db.read();
                         data.sort(Worker.WorkerIdComparator);
+                        adapter = new WorkerAdapter(data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "HỌ":{
+                        data = db.read();
                         data.sort(Worker.WorkerFirstNameComparator);
+                        adapter = new WorkerAdapter(data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "TÊN":{
+                        data = db.read();
                         data.sort(Worker.WorkerLastNameComparator);
+                        adapter = new WorkerAdapter(data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "PHÂN XƯỞNG":{
+                        data = db.read();
                         data.sort(Worker.WorkerFactoryIdComparator);
+                        adapter = new WorkerAdapter(data);
+                        rDanhSach.setAdapter(adapter);
                         break;
                     }
                     default:{
                         break;
                     }
                 }
-                adapter = new WorkerAdapter(data);
-                rDanhSach.setAdapter(adapter);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                adapter = new WorkerAdapter(dataOld);
-                rDanhSach.setAdapter(adapter);
             }
         });
 
@@ -112,9 +132,9 @@ public class ListWorkerFragment extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), UpdateWorkerActivity.class);
-                intent.putExtra("page", createPage);
-                startActivityForResult(intent, 1);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.PAGE, createPage);
+                Navigation.findNavController(view).navigate(R.id.action_listWorker_to_updateWorker, bundle);
             }
         });
 
@@ -138,6 +158,9 @@ public class ListWorkerFragment extends Fragment {
 
     private void setControl(View view){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
+        BottomNavigationView navBar = getActivity().findViewById(R.id.bottom_navigation);
+        navBar.setVisibility(View.VISIBLE);
+
         rDanhSach = (RecyclerView) view.findViewById(R.id.rListWorker);
         rDanhSach.setLayoutManager(linearLayoutManager);
         btnAdd = (Button) view.findViewById(R.id.btnAdd);

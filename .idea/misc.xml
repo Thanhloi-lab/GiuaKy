@@ -45,7 +45,9 @@
         <entry key="app/src/main/res/drawable/btn_back1.xml" value="0.339" />
         <entry key="app/src/main/res/drawable/btn_back_custom.xml" value="0.339" />
         <entry key="app/src/main/res/drawable/btn_cancel.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/btn_cancel1.xml" value="0.2565" />
         <entry key="app/src/main/res/drawable/btn_delete.xml" value="0.2005" />
+        <entry key="app/src/main/res/drawable/btn_delete1.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/btn_delete_custom.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/charm_octagon-warning.xml" value="0.339" />
         <entry key="app/src/main/res/drawable/delete_dialog.xml" value="0.339" />

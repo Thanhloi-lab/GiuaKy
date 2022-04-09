@@ -49,7 +49,7 @@ public class TimeKeepingDatabase extends SQLiteOpenHelper {
     public ArrayList<TimeKeepingViewModel> read(String date, int workerId){
         ArrayList<TimeKeepingViewModel> data = new ArrayList<>();
 
-        String sql = "select cn.MACN , cn.HOCN , cn.TENCN, cc.MACC, cc.NGAYCC from CONGNHAN as cn,CHAMCONG as cc where cn.MACN = cc.MACN "
+        String sql = "select cn.MACN , cn.HOCN , cn.TENCN, cc.MACC, cc.NGAYCC , cn.phanXuong from CONGNHAN as cn,CHAMCONG as cc where cn.MACN = cc.MACN "
                 + String.format("and (cn.MACN = %d or %d = 0) and (cc.NGAYCC = '%s' or '%s' = '' )",workerId,workerId,date,date );
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql,
@@ -64,6 +64,7 @@ public class TimeKeepingDatabase extends SQLiteOpenHelper {
                 timeKeepingViewModel.setWorker_name(cursor.getString(1) + " " + cursor.getString(2));
                 timeKeepingViewModel.setId(cursor.getInt(3));
                 timeKeepingViewModel.setDate(cursor.getString(4));
+                timeKeepingViewModel.setFactory_id(cursor.getString(5));
                 data.add(timeKeepingViewModel);
             }while (cursor.moveToNext());
         }

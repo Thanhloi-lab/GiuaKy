@@ -7,12 +7,13 @@
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/add_time_keeping.xml" value="0.14990942028985507" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/delete_time_keeeping.xml" value="0.1" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/delete_worker_dialog.xml" value="0.14990942028985507" />
+        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_list_time_keeping.xml" value="0.20643363728470113" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_list_time_keeping_detail.xml" value="0.1" />
-        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.1" />
+        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.176" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_product.xml" value="0.1" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_statistic.xml" value="0.1" />
-        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_time_keeping.xml" value="0.1" />
-        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_time_keeping_detail.xml" value="0.1" />
+        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_time_keeping.xml" value="0.264" />
+        <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_time_keeping_detail.xml" value="0.264" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/fragment_worker.xml" value="0.1" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/layout_timekeeping_detail.xml" value="0.22" />
         <entry key="..\:/Code/Android/GiuaKy/app/src/main/res/layout/time_keeping_detail_item.xml" value="0.1" />
@@ -51,14 +52,11 @@
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/worker_box.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/activity_update_worker.xml" value="0.33695652173913043" />
-
+        <entry key="..\:/GiuaKy/app/src/main/res/layout/add_time_keeping.xml" value="0.24947916666666667" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/alert.xml" value="0.240625" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/delete_worker_dialog.xml" value="0.27291666666666664" />
-
-        <entry key="..\:/GiuaKy/app/src/main/res/layout/add_time_keeping.xml" value="0.24947916666666667" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_time_keeping.xml" value="0.25364583333333335" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_time_keeping_detail.xml" value="0.25" />
-
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_list_worker.xml" value="0.3144278606965174" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_product.xml" value="0.1762917933130699" />
         <entry key="..\:/GiuaKy/app/src/main/res/layout/fragment_statistic.xml" value="0.1762917933130699" />

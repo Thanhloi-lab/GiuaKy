@@ -12,4 +12,5 @@ public class Constant {
     public static String PAGE = "PAGE";
     public static String WORKER_UPDATE_PAGE = "WORKER_UPDATE_PAGE";
     public static String WORKER_CREATE_PAGE = "WORKER_CREATE_PAGE";
+    public static String TIME_KEEPING = "TIME_KEEPING";
 }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.giuaky.Constant;
 import com.example.giuaky.Database.TimeKeepingDatabase;
 import com.example.giuaky.Database.WorkerDatabase;
 import com.example.giuaky.R;
@@ -59,8 +61,6 @@ public class TimeKeepingAdapter extends ArrayAdapter<TimeKeepingViewModel>  {
         LinearLayout llTimeKeeping = convertView.findViewById(R.id.llTimekeepingItem);
 
         TimeKeepingViewModel timekeeping = data.get(position);
-        System.out.println(tvDate.getText() + "alo");
-//
         tvDate.setText(timekeeping.getDate());
         tvName.setText(timekeeping.getWorker_name());
         tvWorkId.setText( String.valueOf(timekeeping.getWorker_id()));
@@ -72,10 +72,13 @@ public class TimeKeepingAdapter extends ArrayAdapter<TimeKeepingViewModel>  {
             }
         });
         llTimeKeeping.setOnClickListener(new View.OnClickListener() {
+            Bundle bundle = new Bundle();
+
 
             @Override
             public void onClick(View view) {
-
+                bundle.putSerializable(Constant.TIME_KEEPING,timekeeping);
+                Navigation.findNavController(parent).navigate(R.id.action_listTimeKeeping_to_ListTimeKeepingDatail, bundle);
             }
         });
 

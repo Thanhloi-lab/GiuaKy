@@ -1,21 +1,24 @@
 package com.example.giuaky.time_keeping;
 
 
+import java.io.Serializable;
 
-public class TimeKeepingViewModel {
+public class TimeKeepingViewModel implements Serializable{
     private int id ;
     private String date ;
     private int worker_id;
     private String worker_name;
+    private String factory_id;
 
     public TimeKeepingViewModel() {
     }
 
-    public TimeKeepingViewModel(int id, String date, int worker_id, String worker_name) {
+    public TimeKeepingViewModel(int id, String date, int worker_id, String worker_name, String factory_id) {
         this.id = id;
         this.date = date;
         this.worker_id = worker_id;
         this.worker_name = worker_name;
+        this.factory_id = factory_id;
     }
 
     public int getId() {
@@ -48,5 +51,13 @@ public class TimeKeepingViewModel {
 
     public void setWorker_name(String worker_name) {
         this.worker_name = worker_name;
+    }
+
+    public String getFactory_id() {
+        return factory_id;
+    }
+
+    public void setFactory_id(String factory_id) {
+        this.factory_id = factory_id;
     }
 }

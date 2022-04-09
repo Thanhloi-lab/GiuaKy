@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/timekeeping_navigation"
+    app:startDestination="@+id/fragment_time_keeping">
+
+    <fragment
+        android:id="@+id/fragment_time_keeping"
+        android:name="com.example.giuaky.fragment.TimeKeepingFragment"
+        android:label="fragment_time_keeping"
+        tools:layout="@layout/fragment_time_keeping" >
+
+        <action
+            android:id="@+id/action_fragment_time_keeping_to_detail"
+            app:destination="@id/time_keeping_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/time_keeping_detail_fragment"
+        android:name="com.example.giuaky.time_keeping.TimeKeepingDetailFragment"
+        android:label="fragment_time_keeping_detail"
+        tools:layout="@layout/fragment_time_keeping_detail" >
+        <action
+            android:id="@+id/action_updateWorker_to_listWorker"
+            app:destination="@id/fragment_time_keeping" />
+    </fragment>
+</navigation>

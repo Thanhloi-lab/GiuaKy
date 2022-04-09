@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +24,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.giuaky.Database.TimeKeepingDatabase;
 import com.example.giuaky.Database.WorkerDatabase;
@@ -36,10 +42,8 @@ import com.example.giuaky.worker.Worker;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,18 +59,20 @@ public class TimeKeepingFragment extends Fragment {
     Calendar dateSelected = Calendar.getInstance();
     private DatePickerDialog datePickerDialog;
     TimeKeepingAdapter adapter ;
-    ArrayList<TimeKeepingViewModel> data;
+    ArrayList<TimeKeepingViewModel> data = new ArrayList<TimeKeepingViewModel>();
     ListView listView;
     Spinner spFactory, spWorker;
-    TextView tvDate;
+    EditText txtDate;
     WorkerDatabase workerDatabase ;
     TimeKeepingDatabase timeKeepingDatabase;
-    Button btnAdd ;
+    Button btnAdd,tbnOpenCalenderftk;
     View view;
+
     SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    NavController navController;
 
     public TimeKeepingFragment() {
         // Required empty public constructor
@@ -89,13 +95,7 @@ public class TimeKeepingFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    private ArrayList<TimeKeepingViewModel> getData()
-    {
-        ArrayList<TimeKeepingViewModel> arrayList = new ArrayList<>();
-        arrayList.add(new TimeKeepingViewModel(1,new Date(),1,"Nguyen Thanh Duy"));
-        arrayList.add(new TimeKeepingViewModel(2,new Date(),2,"Tran Quan Duc"));
-        return arrayList
-;    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,16 +118,24 @@ public class TimeKeepingFragment extends Fragment {
         setEvent();
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+        navController.clearBackStack(R.id.fragment_time_keeping);
+    }
     public void setControl()
     {
         listView = view.findViewById(R.id.lvTimeKeepingftk);
         spFactory = view.findViewById(R.id.spFactoroyftk);
         spWorker = view.findViewById(R.id.spWorkerftk);
-        tvDate = view.findViewById(R.id.tvDateftk);
+        txtDate = view.findViewById(R.id.tvDateftk);
         btnAdd = view.findViewById(R.id.addTimekeeping);
+        tbnOpenCalenderftk = view.findViewById((R.id.openCalenderftk));
+        timeKeepingDatabase = new TimeKeepingDatabase(getContext());
+        LoadTimekeeping();
 
-        adapter = new TimeKeepingAdapter(getContext(),R.layout.layout_timekeeping_detail,getData());
-        listView.setAdapter(adapter);
         workerDatabase = new WorkerDatabase(getContext());
         ArrayList<Worker> workers = workerDatabase.read();
         ArrayAdapter workerAdater =  new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1,workers);
@@ -145,10 +153,10 @@ public class TimeKeepingFragment extends Fragment {
             }
         });
 
-        tvDate.setOnClickListener(new View.OnClickListener() {
+        txtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setDateTimeField(tvDate) ;
+                setDateTimeField(txtDate) ;
             }
         });
         spFactory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -157,7 +165,7 @@ public class TimeKeepingFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ArrayList<Worker> workers = workerDatabase.read();
                 int phanXuong = Integer.parseInt(spFactory.getSelectedItem().toString());
-                ArrayList<Worker> newWorker  = new ArrayList<>();
+                ArrayList<Worker> newWorker  = new ArrayList<Worker>();
                 for (Worker worker: workers
                      ) {
                     if(worker.getPhanXuong() == phanXuong)
@@ -173,8 +181,67 @@ public class TimeKeepingFragment extends Fragment {
 
             }
         });
+        txtDate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                LoadTimekeeping();
+            }
+        });
+        tbnOpenCalenderftk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar newCalendar = dateSelected;
+
+                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        dateSelected.set(year, monthOfYear, dayOfMonth, 0, 0);
+                        txtDate.setText(dateFormatter.format(dateSelected.getTime()));
+                    }
+
+                }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+                txtDate.setText(dateFormatter.format(dateSelected.getTime()));
+            }
+        });
+        spWorker.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                LoadTimekeeping();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    private void LoadTimekeeping()
+    {
+        int workerId =  getCurrentWorkerId();
+        data.clear();
+        data.addAll(timeKeepingDatabase.read(txtDate.getText().toString(),workerId));
+        adapter = new TimeKeepingAdapter(getContext(),R.layout.layout_timekeeping_detail,data);
+        adapter.notifyDataSetChanged();
+        listView.setAdapter(adapter);
+
+    }
+    private int getCurrentWorkerId()
+    {
+        Worker worker = (Worker)spWorker.getSelectedItem();
+        if(worker != null)
+            return  worker.getMaCN();
+        return 0;
     }
     private void setDateTimeField(TextView tv) {
         Calendar newCalendar = dateSelected;
@@ -251,12 +318,14 @@ public class TimeKeepingFragment extends Fragment {
                 timeKeepingDatabase.Add(timekeeping);
                 dialog.dismiss();
                 Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                LoadTimekeeping();
 
             }
         });
 
 
         dialog.show();
+
 
     }
 

@@ -1,17 +1,17 @@
 package com.example.giuaky.time_keeping;
 
-import java.util.Date;
+
 
 public class TimeKeepingViewModel {
     private int id ;
-    private Date date ;
+    private String date ;
     private int worker_id;
     private String worker_name;
 
     public TimeKeepingViewModel() {
     }
 
-    public TimeKeepingViewModel(int id, Date date, int worker_id, String worker_name) {
+    public TimeKeepingViewModel(int id, String date, int worker_id, String worker_name) {
         this.id = id;
         this.date = date;
         this.worker_id = worker_id;
@@ -26,11 +26,11 @@ public class TimeKeepingViewModel {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    android:background="@drawable/worker_box">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bạn có muốn xóa chấm công cho sản phẩm">
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvProductNamedtkd">
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        style="@style/item_add_time_keeping_style">
+        <Button
+            style="@style/btn_delete_style"
+            android:text="@string/delete"
+            android:id="@+id/btnConfirmDeletetkd"
+            ></Button>
+    </LinearLayout>
+
+
+</LinearLayout>

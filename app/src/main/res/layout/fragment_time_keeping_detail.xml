@@ -20,7 +20,7 @@
             <Button
                 style="@style/btn_add_style"
                 android:text="Thêm"
-                android:id="@+id/addTimekeeping"
+                android:id="@+id/addTimekeepingDetail"
                 ></Button>
             <TextView
                 android:layout_width="match_parent"
@@ -93,7 +93,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/lvTimeKeepingftk"
+            android:id="@+id/lvTimeKeepingDetail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

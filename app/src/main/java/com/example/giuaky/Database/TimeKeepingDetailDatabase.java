@@ -14,9 +14,9 @@ import com.example.giuaky.time_keeping.Timekeeping;
 
 import java.util.ArrayList;
 
-public class TimeKeepinDetailDatabase extends SQLiteOpenHelper {
-    public TimeKeepinDetailDatabase(@Nullable Context context) {
-        super(context,"CHITIETCC", null, 1 );
+public class TimeKeepingDetailDatabase extends SQLiteOpenHelper {
+    public TimeKeepingDetailDatabase(@Nullable Context context) {
+        super(context,"CHAMCONG", null, 1 );
     }
 
 
@@ -55,30 +55,29 @@ public class TimeKeepinDetailDatabase extends SQLiteOpenHelper {
         database.close();
     }
 
-//    public ArrayList<TimeKeepingDetailViewModel> read(String date, int workerId){
-//        ArrayList<TimeKeepingViewModel> data = new ArrayList<>();
-//
-//        String sql = "select cn.MACN , cn.HOCN , cn.TENCN, cc.MACC, cc.NGAYCC , cn.phanXuong from CONGNHAN as cn,CHAMCONG as cc where cn.MACN = cc.MACN "
-//                + String.format("and (cn.MACN = %d or %d = 0) and (cc.NGAYCC = '%s' or '%s' = '' )",workerId,workerId,date,date );
-//        SQLiteDatabase database = getReadableDatabase();
-//        Cursor cursor = database.rawQuery(sql,
-//                null
-//
-//        );
-//
-//        if(cursor.moveToFirst()){
-//            do{
-//                TimeKeepingViewModel timeKeepingViewModel = new TimeKeepingViewModel();
-//                timeKeepingViewModel.setWorker_id(cursor.getInt(0));
-//                timeKeepingViewModel.setWorker_name(cursor.getString(1) + " " + cursor.getString(2));
-//                timeKeepingViewModel.setId(cursor.getInt(3));
-//                timeKeepingViewModel.setDate(cursor.getString(4));
-//                timeKeepingViewModel.setFactory_id(cursor.getString(5));
-//                data.add(timeKeepingViewModel);
-//            }while (cursor.moveToNext());
-//        }
-//        database.close();
-//        return data;
-//    }
+    public ArrayList<TimeKeepingDetailViewModel> read(int timekeepingId){
+        ArrayList<TimeKeepingDetailViewModel> data = new ArrayList<>();
+
+        String sql = "select sp.MASP , sp.TENSP , cc.SOTP, cc.SOPP , cc.MACC from SANPHAM as sp, CHITIETCC as cc where cc.MASP = sp.MASP and cc.MACC = ?";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql,
+                new String[]{timekeepingId  + ""}
+
+        );
+
+        if(cursor.moveToFirst()){
+            do{
+                TimeKeepingDetailViewModel timeKeepingViewModel = new TimeKeepingDetailViewModel();
+                timeKeepingViewModel.setProduct_id(cursor.getInt(0));
+                timeKeepingViewModel.setProduct_name(cursor.getString(1));
+                timeKeepingViewModel.setFinish_product(cursor.getInt(2));
+                timeKeepingViewModel.setWaste(cursor.getInt(3));
+                timeKeepingViewModel.setTime_keeping_id(cursor.getInt(4));
+                data.add(timeKeepingViewModel);
+            }while (cursor.moveToNext());
+        }
+        database.close();
+        return data;
+    }
 
 }

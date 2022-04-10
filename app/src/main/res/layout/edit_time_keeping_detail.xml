@@ -14,11 +14,11 @@
             android:text="@string/san_pham">
 
         </TextView>
-        <Spinner
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spProductatkpd">
-        </Spinner>
+            android:id="@+id/tvProductetkpd">
+        </TextView>
     </LinearLayout>
     <LinearLayout
         style="@style/item_add_time_keeping_style">
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:id="@+id/txtFinishProductatkpd">
+            android:id="@+id/txtFinishProductetkpd">
         </EditText>
     </LinearLayout>
     <LinearLayout
@@ -47,15 +47,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:id="@+id/txtWasteProductatkpd">
+            android:id="@+id/txtWasteProductetkpd">
         </EditText>
     </LinearLayout>
     <LinearLayout
         style="@style/item_add_time_keeping_style">
         <Button
             style="@style/btn_add_style"
-            android:text="Thêm"
-            android:id="@+id/saveatkpd"
+            android:text="Lưu"
+            android:id="@+id/saveetkpd"
             ></Button>
     </LinearLayout>
 

@@ -21,10 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.giuaky.Constant;
+import com.example.giuaky.Database.ProductDatabase;
 import com.example.giuaky.Database.TimeKeepingDatabase;
 import com.example.giuaky.Database.TimeKeepingDetailDatabase;
 import com.example.giuaky.Database.WorkerDatabase;
 import com.example.giuaky.R;
+import com.example.giuaky.product.Product;
 import com.example.giuaky.template.UpdatePage;
 import com.example.giuaky.worker.Worker;
 
@@ -40,6 +42,7 @@ public class TimeKeepingDetailFragment extends Fragment {
     ArrayList<TimeKeepingDetailViewModel> data =  new ArrayList<>();
     TimeKeepingDetailAdapter adapter;
     TimeKeepingDetailDatabase database;
+    ProductDatabase productDatabase;
     Button btnAdd;
 
     public TimeKeepingDetailFragment() {
@@ -83,6 +86,8 @@ public class TimeKeepingDetailFragment extends Fragment {
         tvFactory.setText(timeKeeping.getFactory_id());
 
         database = new TimeKeepingDetailDatabase(getContext());
+        productDatabase = new ProductDatabase(getContext());
+
         data = database.read(timeKeeping.getId());
         adapter = new TimeKeepingDetailAdapter(getContext(),R.layout.time_keeping_detail_item,data);
         lvTimeKeepingDetail.setAdapter(adapter);
@@ -96,6 +101,13 @@ public class TimeKeepingDetailFragment extends Fragment {
                 openAddDialog();
             }
         });
+    }
+    public void LoadTimeKeepingDetail()
+    {
+        data.clear();
+        data.addAll(database.read(timeKeeping.getId()));
+        adapter.notifyDataSetChanged();
+
     }
     public void openAddDialog()
     {
@@ -114,52 +126,42 @@ public class TimeKeepingDetailFragment extends Fragment {
 
         dialog.setCancelable(true);
 
-        Spinner spFactory, spWorker;
-        TextView tvDateAdd;
-        Button btnsave;
-        spFactory = dialog.findViewById(R.id.spFactoroyatk);
-        spWorker = dialog.findViewById(R.id.spWorkeratk);
-        tvDateAdd = dialog.findViewById(R.id.tvDateatk);
-        btnsave = dialog.findViewById(R.id.saveatk);
+        Spinner spProduct;
+        TextView txtFinishProduct, txtWasteProduct;
+        Button btnSave;
+
+        spProduct = dialog.findViewById(R.id.spProductatkpd);
+        txtFinishProduct = dialog.findViewById(R.id.txtFinishProductatkpd);
+        txtWasteProduct = dialog.findViewById(R.id.txtWasteProductatkpd);
+        btnSave = dialog.findViewById(R.id.saveatkpd);
+
+        ArrayList<Product> products = productDatabase.readProduct();
+        ArrayAdapter productAdater =  new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1,products);
+        spProduct.setAdapter(productAdater);
 
 
 
 
 
-//        ArrayList<Worker> workers = workerDatabase.read();
-//        ArrayAdapter workerAdater =  new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1,workers);
-//        spWorker.setAdapter(workerAdater);
-//
-//        ArrayAdapter factoryAdpater  = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,getFactoroy(workers));
-//        spFactory.setAdapter(factoryAdpater);
-//
-//        tvDateAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                setDateTimeField(tvDateAdd) ;
-//            }
-//        });
-//
-//        btnsave.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Timekeeping timekeeping = new Timekeeping();
-//                Worker worker = (Worker)spWorker.getSelectedItem();
-//                timekeeping.setMaCN(worker.getMaCN());
-//                try {
-//                    timekeeping.setNgayCC(tvDateAdd.getText().toString());
-//                }catch (Exception e)
-//                {
-//                    return;
-//                }
-//
-//                timeKeepingDatabase.Add(timekeeping);
-//                dialog.dismiss();
-//                Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-//                LoadTimekeeping();
-//
-//            }
-//        });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimeKeepingDetail timeKeepingDetail = new TimeKeepingDetail();
+                Product product = (Product) spProduct.getSelectedItem();
+
+                timeKeepingDetail.setTime_keeping_id(timeKeeping.getId());
+                timeKeepingDetail.setFinish_product(Integer.parseInt(txtFinishProduct.getText().toString()));
+                timeKeepingDetail.setWaste((Integer.parseInt(txtWasteProduct.getText().toString())));
+                timeKeepingDetail.setProduct_id(product.getMaSP());
+
+                database.add(timeKeepingDetail);
+                dialog.dismiss();
+                Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                LoadTimeKeepingDetail();
+
+
+            }
+        });
 
 
         dialog.show();

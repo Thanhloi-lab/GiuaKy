@@ -1,0 +1,109 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/float06"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/header"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack_to_listProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_back_custom"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_group_3"
+            android:orientation="horizontal"
+            android:text="@string/back"
+            android:textColor="#ccc"
+            android:textSize="12dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvTitleUpdateProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titleCreateProduct"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center_horizontal">
+           <LinearLayout
+               android:layout_width="220dp"
+               android:paddingHorizontal="10dp"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="26dp"
+               android:orientation="vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="left"
+                   android:layout_marginBottom="8dp"
+                   android:text="@string/product_name"/>
+               <EditText
+                   android:id="@+id/etProductName"
+                   android:layout_width="match_parent"
+                   android:layout_height="40dp"
+                   android:background="@drawable/search_textedit"
+                   android:drawableRight="@drawable/ic_edit"/>
+           </LinearLayout>
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+            <LinearLayout
+                android:layout_width="220dp"
+                android:paddingHorizontal="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/product_price"/>
+                <EditText
+                    android:id="@+id/etPriceProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/search_textedit"
+                    android:drawableRight="@drawable/ic_edit"/>
+                <Button
+                    android:id="@+id/btnUpdateProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="38dp"
+                    android:background="@drawable/btn_add_custom"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -31,11 +31,6 @@
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/search_timekeeping_detail.xml" value="0.179" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable-v24/sort_worker.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_add.xml" value="0.228" />
-        <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_cancel.xml" value="0.1295" />
-        <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_cancel1.xml" value="0.1295" />
-        <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_cancel_custom.xml" value="0.1295" />
-        <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_delete1.xml" value="0.1295" />
-        <entry key="..\:/GiuaKy/app/src/main/res/drawable/btn_delete_custom.xml" value="0.1295" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/header_update_worker.xml" value="0.187" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.194" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_cham_cong.xml" value="0.2315" />
@@ -43,7 +38,6 @@
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_cong_nhan.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_congnhan.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_group_3.xml" value="0.187" />
-        <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_icon_park_outline_caution.xml" value="0.1295" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_plus_circle.xml" value="0.228" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_san_pham.xml" value="0.2315" />
         <entry key="..\:/GiuaKy/app/src/main/res/drawable/ic_search.xml" value="0.194" />
@@ -72,6 +66,7 @@
         <entry key="..\:/GiuaKy/app/src/main/res/layout/worker_info_item.xml" value="0.36666666666666664" />
         <entry key="..\:/GiuaKy/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
         <entry key="..\:/GiuaKy/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
+
         <entry key="..\:/Users/aa/Documents/PTIT/NAM 4/HKII/GiuaKy/app/src/main/res/drawable/btn_add.xml" value="0.1055" />
         <entry key="..\:/Users/aa/Documents/PTIT/NAM 4/HKII/GiuaKy/app/src/main/res/drawable/header_update_worker.xml" value="0.11" />
         <entry key="..\:/Users/aa/Documents/PTIT/NAM 4/HKII/GiuaKy/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.11" />

@@ -22,7 +22,8 @@ public class Product implements Serializable {
 
             String name1 = p1.getTenSP().toUpperCase();
             String name2 = p2.getTenSP().toUpperCase();
-            return name2.compareTo(name1);
+
+            return name1.compareTo(name2);
         }
     };
 
@@ -66,10 +67,5 @@ public class Product implements Serializable {
 
     public void setGia(Float gia) {
         this.gia = gia;
-    }
-
-    @Override
-    public String toString() {
-        return tenSP;
     }
 }

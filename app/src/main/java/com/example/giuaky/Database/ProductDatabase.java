@@ -39,7 +39,7 @@ public class ProductDatabase extends SQLiteOpenHelper {
     public void editProduct(Product product, int maSP){
         String sql = "update SANPHAM set TENSP=?, GIA=? where MASP=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{product.getTenSP(), product.getGia()+"", maSP+""});
+        database.execSQL(sql, new String[]{product.getTenSP(), product.getGia()+"", product.getMaSP()+""});
         database.close();
     }
 

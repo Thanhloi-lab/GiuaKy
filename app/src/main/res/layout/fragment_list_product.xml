@@ -26,9 +26,7 @@
            android:layout_gravity="center"
            android:text="@string/add"
            android:textColor="#fff"
-           android:theme="@style/Button.Add"
-           android:clickable="true"
-           android:drawableLeft="@drawable/ic_plus_circle" />
+           android:drawableStart="@drawable/ic_plus_circle" />
 
        <LinearLayout
            android:id="@+id/searchProduct"
@@ -69,7 +67,6 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:clickable="true"
                 android:entries="@array/product_sort_item"
                 android:background="@drawable/sort_worker"/>
     </LinearLayout>

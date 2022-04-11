@@ -131,8 +131,8 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
                 winLayoutParams.gravity = Gravity.CENTER;
                 window.setAttributes(winLayoutParams);
 
-                Button btnCancel = alert.findViewById(R.id.btn_dialog_delete_worker);
-                Button btnDelete = alert.findViewById(R.id.btn_dialog_cancel_worker);
+                Button btnCancel = alert.findViewById(R.id.btn_dialog_cancel_worker);
+                Button btnDelete = alert.findViewById(R.id.btn_dialog_delete_worker);
 
                 btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override

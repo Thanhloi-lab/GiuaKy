@@ -45,8 +45,6 @@
     <string name="ma_san_pham">Mã sản phẩm:</string>
     <string name="ten_san_pham">Tên sản phẩm:</string>
     <string name="don_gia">Đơn giá:</string>
-    <string name="thanh_pham">Thành phẩm:</string>
-    <string name="phe_pham">Phế phẩm:</string>
     <string name="tong_tien">Tổng tiền:</string>
     <string name="cong_nhan_text">Công nhân:</string>
     <string name="print_message">Bạn có muốn in bảng lương của công nhân:</string>

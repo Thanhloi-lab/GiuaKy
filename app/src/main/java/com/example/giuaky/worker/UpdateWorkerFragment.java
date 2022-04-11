@@ -10,8 +10,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.giuaky.Constant;
@@ -20,6 +22,9 @@ import com.example.giuaky.R;
 import com.example.giuaky.template.UpdatePage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class UpdateWorkerFragment extends Fragment {
 
@@ -27,8 +32,16 @@ public class UpdateWorkerFragment extends Fragment {
     Button btnUpdate;
     EditText etFirstName;
     EditText etLastName;
-    EditText etFactoryId;
+    Spinner spnFactoryId;
     TextView tvTitle;
+    ArrayList<Integer> factoryIds = new ArrayList<>();
+
+    public void getFactoryIds() {
+        for(int i=1; i<=10; i++)
+        {
+            factoryIds.add(i);
+        }
+    }
 
     private int maCN;
     private UpdatePage updatePage;
@@ -46,6 +59,7 @@ public class UpdateWorkerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewNow = inflater.inflate(R.layout.activity_update_worker, container, false);
         bundle = this.getArguments();
+        getFactoryIds();
 
         setControl();
         setEvent();
@@ -96,7 +110,7 @@ public class UpdateWorkerFragment extends Fragment {
         Worker worker = new Worker();
         worker.setHoCN(etFirstName.getText().toString());
         worker.setTenCN(etLastName.getText().toString());
-        worker.setPhanXuong(Integer.parseInt(etFactoryId.getText().toString()));
+        worker.setPhanXuong(Integer.parseInt(spnFactoryId.getSelectedItem().toString()));
         return worker;
     }
 
@@ -106,8 +120,12 @@ public class UpdateWorkerFragment extends Fragment {
             maCN = wk.getMaCN();
             etFirstName.setText(wk.getHoCN());
             etLastName.setText(wk.getTenCN());
-            etFactoryId.setText(wk.getPhanXuong()+"");
+            spnFactoryId.setSelection(getPosistion(wk.getPhanXuong()));
         }
+    }
+
+    private int getPosistion(int id) {
+        return factoryIds.indexOf(id);
     }
 
     private void initPage() {
@@ -138,7 +156,17 @@ public class UpdateWorkerFragment extends Fragment {
         btnUpdate = viewNow.findViewById(R.id.btnUpdateWorker);
         etFirstName = viewNow.findViewById(R.id.etFirstName);
         etLastName = viewNow.findViewById(R.id.etLastName);
-        etFactoryId = viewNow.findViewById(R.id.etFactoryId);
+        spnFactoryId = viewNow.findViewById(R.id.spnFactoryId);
         tvTitle = viewNow.findViewById(R.id.tvTitleUpdateWorker);
+
+
+        final List<String> list = new ArrayList<String>();
+        for (int item : factoryIds) {
+            list.add(item+"");
+        }
+
+        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, list);
+        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnFactoryId.setAdapter(adp1);
     }
 }

@@ -14,23 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GiuaKy">
         <activity
-            android:name=".statistic.TimeKeepingDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".statistic.WorkerTimekeepingActivity"
-            android:exported="false"
-            android:label="@string/title_activity_timekeeping"
-            android:theme="@style/Theme.GiuaKy.NoActionBar" />
-        <activity
-            android:name=".statistic.ChartActivity"
-            android:exported="false" />
-        <activity
-            android:name=".worker.UpdateWorkerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".product.UpdateProduct"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">

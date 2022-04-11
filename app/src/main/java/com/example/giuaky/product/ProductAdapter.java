@@ -138,15 +138,59 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             @Override
             public void onClick(View view) {
                 db=new ProductDatabase(context);
-                db.deleteProduct(product);
-                data=dataOld=db.readProduct();
-                notifyDataSetChanged();
-                dialog.dismiss();
+                int i= db.deleteProduct(product);
+                if(i==1)
+                {
+                    openDialog(view);
+                }
+                else
+                {
+                    data=dataOld=db.readProduct();
+                    notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+
             }
         });
 
         dialog.show();
     }
+
+
+    private void openDialog(View view)
+    {
+        final Dialog dialog=new Dialog(view.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.message_box);
+
+        Window window=dialog.getWindow();
+        if(window==null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+        WindowManager.LayoutParams winLayoutParams=window.getAttributes();
+
+        window.setAttributes(winLayoutParams);
+
+        Button btnOK =dialog.findViewById(R.id.btnCancelAlert);
+
+            TextView text=dialog.findViewById(R.id.tv_info_alert);
+            text.setText("Bạn không thể xóa sản phẩm đã tồn tại trong chi tiết chấm công!!!");
+
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
+
     @Override
     public int getItemCount() {
         if(data!=null){

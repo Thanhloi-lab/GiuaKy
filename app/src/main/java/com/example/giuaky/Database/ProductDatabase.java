@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.giuaky.product.Product;
+import com.example.giuaky.statistic.TimeKeepingDetail;
 
 import java.util.ArrayList;
 
@@ -43,11 +44,18 @@ public class ProductDatabase extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void deleteProduct(Product product){
-        String sql = "delete from SANPHAM where MASP=?";
-        SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{product.getMaSP()+""});
-        database.close();
+    public int deleteProduct(Product product){
+        if(cancelDeleteProduct(product.getMaSP())!=0)
+        {
+            return 1;
+        }
+        else {
+            String sql = "delete from SANPHAM where MASP=?";
+            SQLiteDatabase database = getWritableDatabase();
+            database.execSQL(sql, new String[]{product.getMaSP() + ""});
+            database.close();
+            return 2;
+        }
     }
 
     public Product getProductById(int maSP){
@@ -81,5 +89,21 @@ public class ProductDatabase extends SQLiteOpenHelper {
         }
         database.close();
         return data;
+    }
+
+
+    public int cancelDeleteProduct(int maSP){
+
+        String sql = "select * from CHITIETCC where CHITIETCC.MASP= "+maSP+" ";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        int i=0;
+        if(cursor.moveToFirst()){
+            do{
+               i++;
+            }while (cursor.moveToNext());
+        }
+        database.close();
+        return i;
     }
 }

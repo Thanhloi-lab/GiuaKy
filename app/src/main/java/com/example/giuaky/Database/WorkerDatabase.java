@@ -52,11 +52,20 @@ public class WorkerDatabase extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void delete(int maCN){
-        String sql = "delete from CONGNHAN where MACN=?";
-        SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{maCN+""});
-        database.close();
+    public int delete(int maCN){
+        if(cancelDeleteWorker(maCN)!=0)
+        {
+            return 1;
+        }
+        else
+        {
+            String sql = "delete from CONGNHAN where MACN=?";
+            SQLiteDatabase database = getWritableDatabase();
+            database.execSQL(sql, new String[]{maCN+""});
+            database.close();
+            return 2;
+        }
+
     }
 
     public Worker getById(int maCN){
@@ -91,5 +100,20 @@ public class WorkerDatabase extends SQLiteOpenHelper {
         }
         database.close();
         return data;
+    }
+
+    public int cancelDeleteWorker(int maCN){
+
+        String sql = "select * from CHAMCONG where CHAMCONG.MACN= "+maCN+" ";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        int i=0;
+        if(cursor.moveToFirst()){
+            do{
+                i++;
+            }while (cursor.moveToNext());
+        }
+        database.close();
+        return i;
     }
 }

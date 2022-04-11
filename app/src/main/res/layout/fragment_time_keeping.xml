@@ -1,97 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.WorkerFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/backGround_color"
+    tools:context=".fragment.TimeKeepingFragment">
 
-    <LinearLayout
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                style="@style/btn_add_style"
-                android:text="Thêm"
-                android:id="@+id/addTimekeeping"/>
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/factory"
-                android:id="@+id/spFactoroyftk"/>
-        </LinearLayout>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/timekeeping_navigation" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time_keeping_date">
-                </TextView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvDateftk"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:hint="Chọn ngày"/>
-
-                    <Button
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="@drawable/ic_baseline_calendar_today_24"
-                        android:id="@+id/openCalenderftk">
-                    </Button>
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="2"
-                android:layout_marginLeft="10dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/worker">
-                </TextView>
-
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:id="@+id/spWorkerftk">
-
-                </Spinner>
-            </LinearLayout>
-        </LinearLayout>
-
-        <ListView
-            android:id="@+id/lvTimeKeepingftk"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-    </LinearLayout>
 
 </LinearLayout>

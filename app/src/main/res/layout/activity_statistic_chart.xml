@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".statistic.ChartActivity"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/header"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_back_custom"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_group_3"
+            android:orientation="horizontal"
+            android:text="@string/back"
+            android:textColor="#ccc"
+            android:textSize="12dp" />
+    </LinearLayout>
+    <!--Ui component for our bar chart-->
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/idBarChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

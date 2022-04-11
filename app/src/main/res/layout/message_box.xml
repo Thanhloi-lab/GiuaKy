@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/message_box"
+    android:layout_margin="12dp">
+
+    <LinearLayout
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_akar_icons_circle_alert" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:text="@string/message_alert"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/btnCancelAlert"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@drawable/btn_cancel_custom"
+                android:text="OK"
+                android:textColor="@color/white"
+                android:layout_marginRight="10dp"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

@@ -291,6 +291,7 @@ public class ListTimeKeepingFragment extends Fragment {
                 Timekeeping timekeeping = new Timekeeping();
                 Worker worker = (Worker)spWorker.getSelectedItem();
                 timekeeping.setMaCN(worker.getMaCN());
+
                 try {
                     timekeeping.setNgayCC(tvDateAdd.getText().toString());
                 }catch (Exception e)

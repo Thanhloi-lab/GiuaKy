@@ -42,9 +42,9 @@ public class StatisticDatabase extends SQLiteOpenHelper {
     public ArrayList<WorkerChartData> getCharData(){
         ArrayList<WorkerChartData> data = new ArrayList<>();
         String sql = "SELECT HOCN, TENCN , SUM(SOTP)\n" +
-                "from CHAMCONG, CHITIETCC, SANPHAM, CONGNHAN\n" +
-                "WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP AND CHAMCONG.MACN = CONGNHAN.MACN\n" +
-                "GROUP BY CONGNHAN.MACN";
+                "from CHAMCONG, CHITIETCC, SANPHAM, CONGNHAN " +
+                "WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP AND CHAMCONG.MACN = CONGNHAN.MACN " +
+                " GROUP BY CONGNHAN.MACN";
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql, null);
         if(cursor.moveToFirst()){
@@ -61,8 +61,8 @@ public class StatisticDatabase extends SQLiteOpenHelper {
 
     public ArrayList<WorkerProductReport> getWorkerProductReport(int maCongNhan){
         ArrayList<WorkerProductReport> data = new ArrayList<>();
-        String sql = "SELECT CHAMCONG.MACC, NGAYCC, TENSP, SOTP, SOPP, DONGIA\n" +
-                "from CHAMCONG, CHITIETCC, SANPHAM\n" +
+        String sql = "SELECT CHAMCONG.MACC, NGAYCC, TENSP, SOTP, SOPP, DONGIA " +
+                "from CHAMCONG, CHITIETCC, SANPHAM " +
                 "WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP AND CHAMCONG.MACN = " + maCongNhan;
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql, null);
@@ -84,9 +84,9 @@ public class StatisticDatabase extends SQLiteOpenHelper {
 
     public ArrayList<WorkerTimeKeeping> getWorkerTimeKeeping(int maCongNhan){
         ArrayList<WorkerTimeKeeping> data = new ArrayList<>();
-        String sql = "SELECT CHAMCONG.MACC, NGAYCC,  SUM(DONGIA*SOTP-DONGIA/2*SOPP) as TONGTIEN\n" +
-                "from CHAMCONG, CHITIETCC, SANPHAM\n" +
-                "WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP AND CHAMCONG.MACN = " + maCongNhan + " " +
+        String sql = "SELECT CHAMCONG.MACC, NGAYCC,  SUM(DONGIA*SOTP-DONGIA/2*SOPP) as TONGTIEN " +
+                " from CHAMCONG, CHITIETCC, SANPHAM " +
+                " WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP AND CHAMCONG.MACN = " + maCongNhan + " " +
                 "GROUP BY CHAMCONG.MACC" ;
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql, null);
@@ -104,9 +104,9 @@ public class StatisticDatabase extends SQLiteOpenHelper {
     }
     public ArrayList<TimeKeepingDetail> getTimeKeepingDetail(int maCongNhan, int maChamCong){
         ArrayList<TimeKeepingDetail> data = new ArrayList<>();
-        String sql = "SELECT SANPHAM.MASP, TENSP, DONGIA, SOTP, SOPP\n" +
-                "    from CHAMCONG, CHITIETCC, SANPHAM\n" +
-                "    WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP\n" +
+        String sql = "SELECT SANPHAM.MASP, SANPHAM.TENSP, SANPHAM.DONGIA, CHITIETCC.SOTP, CHITIETCC.SOPP " +
+                "    from CHAMCONG, CHITIETCC, SANPHAM" +
+                "    WHERE CHAMCONG.MACC = CHITIETCC.MACC AND CHITIETCC.MASP = SANPHAM.MASP " +
                 "    AND CHAMCONG.MACN = " + maCongNhan + " " +
                 "    AND CHAMCONG.MACC = " + maChamCong ;
         SQLiteDatabase database = getReadableDatabase();
@@ -118,7 +118,7 @@ public class StatisticDatabase extends SQLiteOpenHelper {
                 timeKeepingDetail.setTenSanPham(cursor.getString(1));
                 timeKeepingDetail.setDonGia(cursor.getInt(2));
                 timeKeepingDetail.setSoThanhPham(cursor.getInt(3));
-                timeKeepingDetail.setSoThanhPham(cursor.getInt(4));
+                timeKeepingDetail.setSoPhePham(cursor.getInt(4));
                 data.add(timeKeepingDetail);
             }while (cursor.moveToNext());
         }

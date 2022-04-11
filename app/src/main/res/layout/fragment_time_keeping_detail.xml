@@ -18,16 +18,45 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btnBack_to_TimeKeeping"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_back"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_group_3"
+                android:orientation="horizontal"
+                android:text="@string/back"
+                android:textColor="#ccc"
+                android:textSize="12dp" />
+            <Button
                 style="@style/btn_add_style"
                 android:text="Thêm"
                 android:id="@+id/addTimekeepingDetail"
                 ></Button>
-            <TextView
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/factory"
-                android:id="@+id/tvFactoroytdtk"
-                ></TextView>
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nhà máy"
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/factory"
+                    android:id="@+id/tvFactoroytdtk"
+                    android:layout_weight="1"
+                    ></TextView>
+            </LinearLayout>
 
         </LinearLayout>
 

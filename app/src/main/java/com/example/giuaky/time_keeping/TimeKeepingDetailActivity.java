@@ -30,7 +30,6 @@ public class TimeKeepingDetailActivity extends AppCompatActivity {
         timeKeeping = (TimeKeepingViewModel) getIntent().getSerializableExtra(Constant.TIME_KEEPING);
         initPage();
 
-
     }
 
     private void setControl()

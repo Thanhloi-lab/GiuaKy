@@ -46,6 +46,7 @@ public class TimeKeepingDetailDatabase extends SQLiteOpenHelper {
                 timekeeping.getTime_keeping_id() + "", timekeeping.getProduct_id() + ""});
         database.close();
     }
+
     public void delete(int timeKeeping_id , int product_id)
     {
         String sql = "delete from  CHITIETCC where MACC = ? and MASP = ? ";
@@ -53,6 +54,30 @@ public class TimeKeepingDetailDatabase extends SQLiteOpenHelper {
         database.execSQL(sql, new String[]{
                 timeKeeping_id + "", product_id + ""});
         database.close();
+    }
+
+    public boolean checkExist(int timeKeeping_id , int product_id )
+    {
+        String sql = "select * from  CHITIETCC as cc where cc.MASP = ? and cc.MACC = ?";
+        SQLiteDatabase database = getReadableDatabase();
+
+        Cursor cursor = database.rawQuery(sql,
+                new String[]{ product_id  + "", timeKeeping_id + ""}
+
+        );
+
+        if(cursor.moveToFirst()){
+            {
+                database.close();
+                return true;
+            }}
+        else
+        {
+            database.close();
+            return false;
+        }
+
+
     }
 
     public ArrayList<TimeKeepingDetailViewModel> read(int timekeepingId){

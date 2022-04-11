@@ -3,9 +3,12 @@ package com.example.giuaky.time_keeping;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -43,7 +46,8 @@ public class TimeKeepingDetailFragment extends Fragment {
     TimeKeepingDetailAdapter adapter;
     TimeKeepingDetailDatabase database;
     ProductDatabase productDatabase;
-    Button btnAdd;
+    Button btnAdd, btnBack;
+
 
     public TimeKeepingDetailFragment() {
         // Required empty public constructor
@@ -77,6 +81,7 @@ public class TimeKeepingDetailFragment extends Fragment {
         tvWorker = view.findViewById(R.id.tvWorkertdtk);
         lvTimeKeepingDetail  = view.findViewById(R.id.lvTimeKeepingDetail);
         btnAdd = view.findViewById(R.id.addTimekeepingDetail);
+        btnBack = view.findViewById(R.id.btnBack_to_TimeKeeping);
 
     }
     private void initPage()
@@ -101,6 +106,13 @@ public class TimeKeepingDetailFragment extends Fragment {
                 openAddDialog();
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(view);
+                navController.popBackStack();
+            }
+        });
     }
     public void LoadTimeKeepingDetail()
     {
@@ -108,6 +120,22 @@ public class TimeKeepingDetailFragment extends Fragment {
         data.addAll(database.read(timeKeeping.getId()));
         adapter.notifyDataSetChanged();
 
+    }
+    public ArrayList<Product> getRemainProduct()
+    {
+        ArrayList<Product> products = productDatabase.readProduct();
+        ArrayList<Product> remainProduct = new ArrayList<>();
+        ArrayList<TimeKeepingDetailViewModel> timeKeepingDetailViewModels =  database.read(timeKeeping.getId());
+        for (Product product : products
+        ){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                if(timeKeepingDetailViewModels.stream().filter((x) -> x.getProduct_id() == product.getMaSP()).toArray().length == 0)
+                {
+                    remainProduct.add(product);
+                }
+            }
+        }
+        return remainProduct;
     }
     public void openAddDialog()
     {
@@ -135,12 +163,9 @@ public class TimeKeepingDetailFragment extends Fragment {
         txtWasteProduct = dialog.findViewById(R.id.txtWasteProductatkpd);
         btnSave = dialog.findViewById(R.id.saveatkpd);
 
-        ArrayList<Product> products = productDatabase.readProduct();
+        ArrayList<Product> products = getRemainProduct();
         ArrayAdapter productAdater =  new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1,products);
         spProduct.setAdapter(productAdater);
-
-
-
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {

@@ -119,6 +119,7 @@ public class TimeKeepingDetailAdapter extends ArrayAdapter<TimeKeepingDetailView
         TextView tvProductNametkd  = dialog.findViewById(R.id.tvProductNamedtkd);
 
         Button  btnConfirmDelete = dialog.findViewById(R.id.btnConfirmDeletetkd);
+        Button btnCancelDelete = dialog.findViewById(R.id.btnCancelDeletetkd);
 
         tvProductNametkd.setText(item.getProduct_name());
 
@@ -138,6 +139,13 @@ public class TimeKeepingDetailAdapter extends ArrayAdapter<TimeKeepingDetailView
 
                 notifyDataSetChanged();
                 Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnCancelDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
             }
         });
 

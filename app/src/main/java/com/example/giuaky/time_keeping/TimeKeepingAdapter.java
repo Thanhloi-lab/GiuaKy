@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.hardware.ConsumerIrManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import androidx.navigation.Navigation;
 
 import com.example.giuaky.Constant;
 import com.example.giuaky.Database.TimeKeepingDatabase;
+import com.example.giuaky.Database.TimeKeepingDetailDatabase;
 import com.example.giuaky.Database.WorkerDatabase;
 import com.example.giuaky.R;
 import com.example.giuaky.worker.Worker;
@@ -113,26 +115,43 @@ public class TimeKeepingAdapter extends ArrayAdapter<TimeKeepingViewModel>  {
 
         TextView tvName  = dialog.findViewById(R.id.tvWorkerdtk);
         TextView tvDate = dialog.findViewById(R.id.tvDatedtk);
-        Button  btnConfirmDelete = dialog.findViewById(R.id.btnConfirmDelete);
-
+        Button  btnConfirmDelete = dialog.findViewById(R.id.btnConfirmDeleteTimeKeeping);
+        Button btnCancelDelete = dialog.findViewById(R.id.btnCancelDeleteTimeKeeping);
         tvName.setText(timeKeeping.getWorker_name());
         tvDate.setText(timeKeeping.getDate());
         TimeKeepingDatabase timeKeepingDatabase = new TimeKeepingDatabase(getContext());
+        TimeKeepingDetailDatabase timeKeepingDetailDatabase = new TimeKeepingDetailDatabase(getContext());
 
         btnConfirmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timeKeepingDatabase.delete(timeKeeping.getId());
-                dialog.dismiss();
 
-                for (TimeKeepingViewModel timeKeepingViewModel: data
-                     ) {
-                    if(timeKeepingViewModel.getId() == timeKeeping.getId())
-                        data.remove(timeKeepingViewModel);
+                if(timeKeepingDetailDatabase.read(timeKeeping.getId()).size() == 0)
+                {
+                    timeKeepingDatabase.delete(timeKeeping.getId());
+                    dialog.dismiss();
+
+                    for (TimeKeepingViewModel timeKeepingViewModel: data
+                    ) {
+                        if(timeKeepingViewModel.getId() == timeKeeping.getId())
+                            data.remove(timeKeepingViewModel);
+                    }
+
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                }else
+                {
+                    Toast.makeText(context, "Không thể xóa", Toast.LENGTH_SHORT).show();
                 }
 
-                notifyDataSetChanged();
-                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        btnCancelDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
             }
         });
 

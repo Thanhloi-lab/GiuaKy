@@ -67,4 +67,9 @@ public class Product implements Serializable {
     public void setGia(Float gia) {
         this.gia = gia;
     }
+
+    @Override
+    public String toString() {
+        return tenSP;
+    }
 }

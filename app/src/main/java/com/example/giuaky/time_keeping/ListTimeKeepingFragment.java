@@ -294,15 +294,22 @@ public class ListTimeKeepingFragment extends Fragment {
 
                 try {
                     timekeeping.setNgayCC(tvDateAdd.getText().toString());
+
                 }catch (Exception e)
                 {
                     return;
                 }
-
-                timeKeepingDatabase.Add(timekeeping);
-                dialog.dismiss();
-                Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                LoadTimekeeping();
+                if(timekeeping.getNgayCC()==null||timekeeping.getNgayCC().toString().equals(""))
+                {
+                    openDialog(Gravity.CENTER,view);
+                }
+                else
+                {
+                    timeKeepingDatabase.Add(timekeeping);
+                    dialog.dismiss();
+                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    LoadTimekeeping();
+                }
 
             }
         });
@@ -311,6 +318,36 @@ public class ListTimeKeepingFragment extends Fragment {
         dialog.show();
 
 
+    }
+
+    private void openDialog(int gravity,View view)
+    {
+        final Dialog dialog=new Dialog(view.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.message_box);
+
+        Window window=dialog.getWindow();
+        if(window==null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+        WindowManager.LayoutParams winLayoutParams=window.getAttributes();
+        winLayoutParams.gravity=gravity;
+        window.setAttributes(winLayoutParams);
+
+        Button btnOK =dialog.findViewById(R.id.btnCancelAlert);
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
     }
 
     ArrayList<String> getFactoroy(ArrayList<Worker> workers)

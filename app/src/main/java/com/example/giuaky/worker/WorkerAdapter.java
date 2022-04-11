@@ -147,7 +147,8 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
                         Toast.makeText(parent.getContext(), "Xóa thành công", Toast.LENGTH_LONG).show();
                         WorkerDatabase db = new WorkerDatabase(parent.getContext());
                         db.delete(wk.getMaCN());
-                        dataOld = data = db.read();
+                        dataOld.remove(wk);
+                        data = dataOld;
                         notifyDataSetChanged();
                         alert.dismiss();
                     }

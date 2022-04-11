@@ -65,6 +65,11 @@ public class Worker implements Serializable {
     public Worker() {
     }
 
+    @Override
+    public String toString() {
+        return getHoCN() + " " + getTenCN();
+    }
+
     public int getMaCN() {
         return maCN;
     }

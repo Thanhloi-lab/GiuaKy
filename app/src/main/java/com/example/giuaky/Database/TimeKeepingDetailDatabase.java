@@ -22,7 +22,7 @@ public class TimeKeepingDetailDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table CHITIETCC (MACC integer ,MASP text, SOTP int, SOPP int,  PRIMARY KEY (MACC, MASP))";
+        String sql = "Create table CHITIETCC (MACC integer ,MASP text, SOTP int, SOPP int,  PRIMARY KEY (MACC, MASP),FOREIGN KEY (MACC) REFERENCES CHAMCONG(MACC),FOREIGN KEY (MASP) REFERENCES SANPHAM(MASP))";
         sqLiteDatabase.execSQL(sql);
     }
 

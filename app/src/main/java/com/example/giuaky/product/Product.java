@@ -22,8 +22,7 @@ public class Product implements Serializable {
 
             String name1 = p1.getTenSP().toUpperCase();
             String name2 = p2.getTenSP().toUpperCase();
-
-            return name1.compareTo(name2);
+            return name2.compareTo(name1);
         }
     };
 

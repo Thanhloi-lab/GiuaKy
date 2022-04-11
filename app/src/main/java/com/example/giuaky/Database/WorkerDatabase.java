@@ -20,8 +20,16 @@ public class WorkerDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table CONGNHAN (MACN integer primary key, HOCN text, TENCN text, PHANXUONG integer)";
+        String sql = "Create table CONGNHAN (MACN integer primary key autoincrement, HOCN text, TENCN text, PHANXUONG integer)";
+        String sql1 = "Create table SANPHAM (MASP integer primary key autoincrement, TENSP text, DONGIA real)";
+        String sql2 = "Create table CHAMCONG (MACC integer primary key autoincrement, NGAYCC text, MACN integer,FOREIGN KEY (MACN) REFERENCES CONGNHAN(MACN))";
+        String sql3 = "Create table CHITIETCC (MACC integer ,MASP text, SOTP int, SOPP int,  PRIMARY KEY (MACC, MASP),FOREIGN KEY (MACC) REFERENCES CHAMCONG(MACC),FOREIGN KEY (MASP) REFERENCES SANPHAM(MASP))";
+
         sqLiteDatabase.execSQL(sql);
+        sqLiteDatabase.execSQL(sql1);
+        sqLiteDatabase.execSQL(sql2);
+        sqLiteDatabase.execSQL(sql3);
+
     }
 
     @Override
@@ -29,22 +37,11 @@ public class WorkerDatabase extends SQLiteOpenHelper {
 
     }
 
-    public int getMaxId(){
-        String sql = "select MAX(MACN) from CONGNHAN";
-        SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery(sql, null);
-        int max = 0;
-        if(cursor.moveToFirst()){
-            max = cursor.getInt(0);
-        }
-        database.close();
-        return max;
-    }
 
     public void add(Worker worker){
         String sql = "insert into CONGNHAN values(?, ?, ?, ?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{worker.getMaCN()+"", worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()+""});
+        database.execSQL(sql, new String[]{null, worker.getHoCN(), worker.getTenCN(), worker.getPhanXuong()+""});
         database.close();
     }
 

@@ -23,7 +23,7 @@ public class TimeKeepingDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table CHAMCONG (MACC integer primary key autoincrement, NGAYCC text, MACN integer)";
+        String sql = "Create table CHAMCONG (MACC integer primary key autoincrement, NGAYCC text, MACN integer,FOREIGN KEY (MACN) REFERENCES CONGNHAN(MACN))";
         sqLiteDatabase.execSQL(sql);
     }
 

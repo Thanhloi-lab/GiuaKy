@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,7 @@ public class ListProductFragment extends Fragment {
     Button btnAddProduct;
     ProductAdapter adapterSP;
 
-    View view;
+    View viewNow;
     ArrayList<Product> dataSP=new ArrayList<>();
     private ProductDatabase dbSP;
 
@@ -45,12 +46,11 @@ public class ListProductFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list_product, container, false);
-        setControl(view);
-        setEvent(view);
-        init(view);
-        showList();
-        return view;
+        viewNow = inflater.inflate(R.layout.fragment_list_product, container, false);
+        setControl(viewNow);
+        setEvent(viewNow);
+        init(viewNow);
+        return viewNow;
 
     }
 
@@ -66,38 +66,35 @@ public class ListProductFragment extends Fragment {
         spnSortSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                switch (spnSortSP.getSelectedItem().toString()){
-//                    case "MÃ SẢN PHẨM":{
-//                        dataSP=dbSP.readProduct();
-//                        Collections.sort(dataSP, Product.ProductIdComparator);
-//                        adapterSP=new ProductAdapter(view.getContext(), R.layout.product_info_item,dataSP);
-//                        rvDanhSachSP.setAdapter(adapterSP);
-//                        break;
-//                    }
-//                    case "TÊN SẢN PHẨM":{
-//                        dataSP=dbSP.readProduct();
-//                        Collections.sort(dataSP, Product.ProductNameComparator);
-//                        adapterSP=new ProductAdapter(view.getContext(), R.layout.product_info_item,dataSP);
-//                        rvDanhSachSP.setAdapter(adapterSP);
-//                    }
-//                    case "ĐƠN GIÁ":{
-//                        dataSP=dbSP.readProduct();
-//                        Collections.sort(dataSP, Product.ProductPriceComparator);
-//                        adapterSP=new ProductAdapter(view.getContext(), R.layout.product_info_item,dataSP);
-//                        rvDanhSachSP.setAdapter(adapterSP);
-//                    }
-//                    default:{
-//
-//                        break;
-//                    }
-//                }
-//                adapterSP = new ProductAdapter(view.getContext(), R.layout.product_info_item, dataSP);
-//                rvDanhSachSP.setAdapter(adapterSP);
+                switch (spnSortSP.getSelectedItem().toString()){
+                    case "MÃ SẢN PHẨM":{
+                        dataSP=dbSP.readProduct();
+                        Collections.sort(dataSP, Product.ProductIdComparator);
+                        adapterSP=new ProductAdapter(viewNow.getContext(), R.layout.product_info_item,dataSP);
+                        rvDanhSachSP.setAdapter(adapterSP);
+                        break;
+                    }
+                    case "TÊN SẢN PHẨM":{
+                        dataSP=dbSP.readProduct();
+                        Collections.sort(dataSP, Product.ProductNameComparator);
+                        adapterSP=new ProductAdapter(viewNow.getContext(), R.layout.product_info_item,dataSP);
+                        rvDanhSachSP.setAdapter(adapterSP);
+                    }
+                    case "ĐƠN GIÁ":{
+                        dataSP=dbSP.readProduct();
+                        Collections.sort(dataSP, Product.ProductPriceComparator);
+                        adapterSP=new ProductAdapter(viewNow.getContext(), R.layout.product_info_item,dataSP);
+                        rvDanhSachSP.setAdapter(adapterSP);
+                    }
+                    default:{
+                        break;
+                    }
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                adapterSP = new ProductAdapter(view.getContext(), R.layout.product_info_item, dataSP);
+                adapterSP = new ProductAdapter(viewNow.getContext(), R.layout.product_info_item, dataSP);
                 rvDanhSachSP.setAdapter(adapterSP);
             }
         });
@@ -112,9 +109,12 @@ public class ListProductFragment extends Fragment {
         btnAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), UpdateProduct.class);
-                intent.putExtra("pageSP", createPage);
-                startActivityForResult(intent, 3);
+//                Intent intent = new Intent(view.getContext(), UpdateProduct.class);
+//                intent.putExtra("pageSP", createPage);
+//                startActivityForResult(intent, 3);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.PAGE, createPage);
+                Navigation.findNavController(viewNow).navigate(R.id.listProduct_to_update, bundle);
             }
         });
 
@@ -150,19 +150,10 @@ public class ListProductFragment extends Fragment {
     private void showList() {
         dataSP.clear();
         dataSP.addAll(dbSP.readProduct());
-        adapterSP=new ProductAdapter(view.getContext(), R.layout.product_info_item,dataSP);
+        adapterSP=new ProductAdapter(viewNow.getContext(), R.layout.product_info_item,dataSP);
         rvDanhSachSP.setAdapter(adapterSP);
 
 
     }
-
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        showList();
-    }
-
 
 }

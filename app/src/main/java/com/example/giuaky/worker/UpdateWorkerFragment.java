@@ -1,15 +1,21 @@
 package com.example.giuaky.worker;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,27 +95,71 @@ public class UpdateWorkerFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 if(updatePage.getBtnStyle().equals(Constant.PAGE_CREATE_WORKER))
                 {
-                    Worker createItem = getWorker();
-                    int max = db.getMaxId()+1;
-                    createItem.setMaCN(max);
-                    db.add(createItem);
-                    bundle.putString(Constant.UPDATE_STATUS, Constant.CREATE_COMPLETED);
-                    Navigation.findNavController(view).navigate(R.id.action_updateWorker_to_listWorker, bundle);
+                    if(etFirstName.getText().toString()==null||etFirstName.getText().toString().equals("")||etLastName.getText().toString()==null||etLastName.getText().toString().equals("")||spnFactoryId.toString()==null||spnFactoryId.toString().equals(""))
+                    {
+                        openDialog(Gravity.CENTER,view);
+                    }
+                    else {
+                        db.add(getWorker());
+                        bundle.putString(Constant.UPDATE_STATUS, Constant.CREATE_COMPLETED);
+                        Navigation.findNavController(view).navigate(R.id.action_updateWorker_to_listWorker, bundle);
+                    }
+
                 }
                 else if(updatePage.getBtnStyle().equals(Constant.PAGE_EIDT_WORKER))
                 {
-                    db.edit(getWorker(), maCN);
-                    bundle.putString(Constant.UPDATE_STATUS, Constant.UPDATE_COMPLETED);
-                    Navigation.findNavController(view).navigate(R.id.action_updateWorker_to_listWorker, bundle);
+                    if(etFirstName.getText().toString()==null||etFirstName.getText().toString().equals("")||etLastName.getText().toString()==null||etLastName.getText().toString().equals("")||spnFactoryId.toString()==null||spnFactoryId.toString().equals(""))
+                    {
+                        openDialog(Gravity.CENTER,view);
+                    }
+                    else {
+                        db.edit(getWorker(), maCN);
+                        bundle.putString(Constant.UPDATE_STATUS, Constant.UPDATE_COMPLETED);
+                        Navigation.findNavController(view).navigate(R.id.action_updateWorker_to_listWorker, bundle);
+                    }
                 }
             }
         });
     }
 
+    private void openDialog(int gravity,View view)
+    {
+        final Dialog dialog=new Dialog(view.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.message_box);
+
+        Window window=dialog.getWindow();
+        if(window==null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+        WindowManager.LayoutParams winLayoutParams=window.getAttributes();
+        winLayoutParams.gravity=gravity;
+        window.setAttributes(winLayoutParams);
+
+        Button btnOK =dialog.findViewById(R.id.btnCancelAlert);
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
+
     private Worker getWorker(){
         Worker worker = new Worker();
-        worker.setHoCN(etFirstName.getText().toString());
-        worker.setTenCN(etLastName.getText().toString());
+        String temp=etFirstName.getText().toString();
+        temp=temp.trim().replaceAll(" +", " ");;
+        worker.setHoCN(temp);
+        temp=etLastName.getText().toString();
+        temp=temp.trim().replaceAll(" +", " ");
+        worker.setTenCN(temp);
         worker.setPhanXuong(Integer.parseInt(spnFactoryId.getSelectedItem().toString()));
         return worker;
     }

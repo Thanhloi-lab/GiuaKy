@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.giuaky.Constant;
@@ -33,6 +35,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     ArrayList<Product> data;
     ArrayList<Product> dataOld;
     private ProductDatabase db;
+    View viewNow;
 
     public class ProductViewHolder extends RecyclerView.ViewHolder{
 
@@ -61,17 +64,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public ProductAdapter(Context context, int resource, ArrayList<Product> data) {
         this.data = data;
         this.dataOld = data;
-//        this.context=context;
-//        this.resource=resource;
+        this.context=context;
+        this.resource=resource;
 
     }
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_info_item, parent, false);
+        viewNow = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_info_item, parent, false);
 
-        return new ProductViewHolder(view);
+        return new ProductViewHolder(viewNow);
     }
 
     @Override
@@ -87,12 +90,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.btnSuaSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent=new Intent(view.getContext(), UpdateProduct.class);
                 UpdatePage editPage = new UpdatePage("SỬA SẢN PHẨM", "Sửa", Constant.PAGE_EDIT_PRODUCT);
-                intent.putExtra("pageSP", editPage);
-                intent.putExtra("MASP", String.valueOf(product.getMaSP()));
-                ((MainActivity)context).startActivityForResult(intent,4);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constant.PRODUCT, product);
+                bundle.putSerializable(Constant.PAGE, editPage);
+                Navigation.findNavController(viewNow).navigate(R.id.listProduct_to_update, bundle);
             }
         });
 

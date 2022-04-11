@@ -20,7 +20,7 @@
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/btn_add"
+            android:background="@drawable/btn_add_custom"
             android:elevation="10dp"
             android:orientation="horizontal"
             android:layout_gravity="center"

@@ -18,7 +18,7 @@ public class ProductDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table SANPHAM (MASP integer primary key autoincrement, TENSP text, GIA float)";
+        String sql = "Create table SANPHAM (MASP integer primary key autoincrement, TENSP text, DONGIA real)";
         sqLiteDatabase.execSQL(sql);
     }
 
@@ -37,9 +37,9 @@ public class ProductDatabase extends SQLiteOpenHelper {
 
 
     public void editProduct(Product product, int maSP){
-        String sql = "update SANPHAM set TENSP=?, GIA=? where MASP=?";
+        String sql = "update SANPHAM set TENSP=?, DONGIA=? where MASP=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{product.getTenSP(), product.getGia()+"", product.getMaSP()+""});
+        database.execSQL(sql, new String[]{product.getTenSP(), product.getGia()+"", maSP+""});
         database.close();
     }
 
@@ -67,19 +67,19 @@ public class ProductDatabase extends SQLiteOpenHelper {
 
     public ArrayList<Product> readProduct(){
         ArrayList<Product> data = new ArrayList<>();
-//        String sql = "select * from SANPHAM";
-//        SQLiteDatabase database = getReadableDatabase();
-//        Cursor cursor = database.rawQuery(sql, null);
-//        if(cursor.moveToFirst()){
-//            do{
-//                Product product=new Product();
-//                product.setMaSP(cursor.getInt(0));
-//                product.setTenSP(cursor.getString(1));
-//                product.setGia(cursor.getFloat(2));
-//                data.add(product);
-//            }while (cursor.moveToNext());
-//        }
-//        database.close();
+        String sql = "select * from SANPHAM";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if(cursor.moveToFirst()){
+            do{
+                Product product=new Product();
+                product.setMaSP(cursor.getInt(0));
+                product.setTenSP(cursor.getString(1));
+                product.setGia(cursor.getFloat(2));
+                data.add(product);
+            }while (cursor.moveToNext());
+        }
+        database.close();
         return data;
     }
 }

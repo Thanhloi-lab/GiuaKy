@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.giuaky.Constant;
 import com.example.giuaky.Database.ProductDatabase;
@@ -21,73 +25,91 @@ import com.example.giuaky.R;
 import com.example.giuaky.template.UpdatePage;
 
 
-public class UpdateProduct extends AppCompatActivity {
-
+public class UpdateProduct extends Fragment {
     Button btnBackSP;
     Button btnUpdateSP;
     EditText etProductName;
     EditText etProductPrice;
     TextView tvTitle;
+    View viewNow;
+    Bundle bundle;
 
-    private int maSP;
+
     private UpdatePage updatePage;
     private ProductDatabase db;
     private Product product;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_product);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        viewNow = inflater.inflate(R.layout.activity_update_product, container, false);
+        bundle = this.getArguments();
+
         setControl();
-        updatePage = (UpdatePage)getIntent().getSerializableExtra("pageSP");
-        initPage();
         setEvent();
+        if(bundle!=null){
+            if(bundle.containsKey(Constant.PAGE)){
+                updatePage = (UpdatePage)bundle.getSerializable(Constant.PAGE);
+                initPage();
+            }
+        }
+        return viewNow;
     }
 
     private void setEvent() {
         btnBackSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                setResult(0, intent);
-                finish();
+                Navigation.findNavController(viewNow).popBackStack();
             }
         });
 
         btnUpdateSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
                 if(updatePage.getBtnStyle().equals(Constant.PAGE_CREATE_PRODUCT))
                 {
                     if(etProductName.getText().toString()==null||etProductName.getText().toString().equals("")||etProductPrice.getText().toString()==null||etProductPrice.getText().toString().equals(""))
                     {
-                        openDialog(Gravity.CENTER,view);
+                        openDialog(Gravity.CENTER,view,1);
+                    }
+                    else if(Integer.parseInt(etProductPrice.getText().toString().trim())<1000)
+                    {
+                        openDialog(Gravity.CENTER,view,2);
                     }
                     else
                     {
-                    db.addProduct(getProduct());
-                    Intent intent = new Intent();
-                    setResult(3, intent);
-                    finish();}
+                        db.addProduct(getProduct());
+                        bundle.putString(Constant.UPDATE_STATUS, Constant.CREATE_COMPLETED);
+                        Navigation.findNavController(view).navigate(R.id.updateProduct_to_list, bundle);
+                    }
                 }
                 if(updatePage.getBtnStyle().equals(Constant.PAGE_EDIT_PRODUCT))
                 {
                     if(etProductName.getText().toString()==null||etProductName.getText().toString().equals("")||etProductPrice.getText().toString()==null||etProductPrice.getText().toString().equals(""))
                     {
-                        openDialog(Gravity.CENTER,view);
+                        openDialog(Gravity.CENTER,view,1);
                     }
-                    else
+                    else if(Integer.parseInt(etProductPrice.getText().toString().trim())<1000)
                     {
-                    db.editProduct(getProduct(), maSP);
-                    Intent intent = new Intent();
-                    setResult(4, intent);
-                    finish();}
+                        openDialog(Gravity.CENTER,view,2);
+                    }
+                    else {
+                        db.editProduct(getProduct(), product.getMaSP());
+                        bundle.putString(Constant.UPDATE_STATUS, Constant.UPDATE_COMPLETED);
+                        Navigation.findNavController(view).navigate(R.id.updateProduct_to_list, bundle);
+                    }
                 }
             }
         });
     }
 
-    private void openDialog(int gravity,View view)
+    private void openDialog(int gravity,View view,int i)
     {
         final Dialog dialog=new Dialog(view.getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -105,6 +127,11 @@ public class UpdateProduct extends AppCompatActivity {
         window.setAttributes(winLayoutParams);
 
         Button btnOK =dialog.findViewById(R.id.btnCancelAlert);
+        if(i==2)
+        {
+            TextView text=dialog.findViewById(R.id.tv_info_alert);
+            text.setText("Gía tiền phải lớn hơn 1000!!!");
+        }
 
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +146,9 @@ public class UpdateProduct extends AppCompatActivity {
 
     private Product getProduct(){
         Product product = new Product();
-        product.setTenSP(etProductName.getText().toString());
+        String temp=etProductName.getText().toString();
+        temp=temp.trim().replaceAll(" +", " ");;
+        product.setTenSP(temp);
         product.setGia(Float.parseFloat(etProductPrice.getText().toString()));
         return product;
     }
@@ -140,13 +169,9 @@ public class UpdateProduct extends AppCompatActivity {
             btnUpdateSP.setText("Sửa");
             tvTitle.setText("SỬA SẢN PHẨM");
             product = new Product();
-            Bundle extras = getIntent().getExtras();
-            if(extras.containsKey("MASP")) {
-                String a =getIntent().getStringExtra("MASP");
-                maSP=Integer.parseInt(a);
-                product = db.getProductById(maSP);
+            if(bundle.containsKey(Constant.PRODUCT)) {
+                product = (Product)bundle.getSerializable(Constant.PRODUCT);
                 etProductName.setText(product.getTenSP());
-
                 etProductPrice.setText(product.getGia()+"");
             }
         }
@@ -154,11 +179,11 @@ public class UpdateProduct extends AppCompatActivity {
 
 
     private void setControl(){
-        db = new ProductDatabase(this);
-        btnBackSP = findViewById(R.id.btnBack_to_listProduct);
-        btnUpdateSP = findViewById(R.id.btnUpdateProduct);
-        etProductName = findViewById(R.id.etProductName);
-        etProductPrice= findViewById(R.id.etPriceProduct);
-        tvTitle = findViewById(R.id.tvTitleUpdateProduct);
+        db = new ProductDatabase(viewNow.getContext());
+        btnBackSP = viewNow.findViewById(R.id.btnBack_to_listProduct);
+        btnUpdateSP = viewNow.findViewById(R.id.btnUpdateProduct);
+        etProductName = viewNow.findViewById(R.id.etProductName);
+        etProductPrice= viewNow.findViewById(R.id.etPriceProduct);
+        tvTitle = viewNow.findViewById(R.id.tvTitleUpdateProduct);
     }
 }

@@ -58,7 +58,8 @@
                    android:id="@+id/etFirstName"
                    android:layout_width="match_parent"
                    android:layout_height="40dp"
-                   android:background="@drawable/search_textedit"/>
+                   android:background="@drawable/search_textedit"
+                   android:drawableRight="@drawable/ic_edit"/>
            </LinearLayout>
        </LinearLayout>
 
@@ -82,7 +83,8 @@
                     android:id="@+id/etLastName"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/search_textedit"/>
+                    android:background="@drawable/search_textedit"
+                    android:drawableRight="@drawable/ic_edit"/>
             </LinearLayout>
         </LinearLayout>
 

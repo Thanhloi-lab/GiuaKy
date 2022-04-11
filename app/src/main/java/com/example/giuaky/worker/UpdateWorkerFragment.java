@@ -95,7 +95,7 @@ public class UpdateWorkerFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 if(updatePage.getBtnStyle().equals(Constant.PAGE_CREATE_WORKER))
                 {
-                    if(etFirstName.getText().toString()==null||etFirstName.getText().toString().equals("")||etLastName.getText().toString()==null||etLastName.getText().toString().equals("")||spnFactoryId.toString()==null||spnFactoryId.toString().equals(""))
+                    if(etFirstName.getText().toString()==null||etFirstName.getText().toString().equals("")||etLastName.getText().toString()==null||etLastName.getText().toString().equals(""))
                     {
                         openDialog(Gravity.CENTER,view);
                     }
@@ -108,7 +108,7 @@ public class UpdateWorkerFragment extends Fragment {
                 }
                 else if(updatePage.getBtnStyle().equals(Constant.PAGE_EIDT_WORKER))
                 {
-                    if(etFirstName.getText().toString()==null||etFirstName.getText().toString().equals("")||etLastName.getText().toString()==null||etLastName.getText().toString().equals("")||spnFactoryId.toString()==null||spnFactoryId.toString().equals(""))
+                    if(etFirstName.getText().toString()==null||etFirstName.getText().toString().equals("")||etLastName.getText().toString()==null||etLastName.getText().toString().equals(""))
                     {
                         openDialog(Gravity.CENTER,view);
                     }

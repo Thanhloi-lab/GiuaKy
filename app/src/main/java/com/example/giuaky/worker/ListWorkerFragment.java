@@ -86,28 +86,28 @@ public class ListWorkerFragment extends Fragment {
                     case "MÃ CÔNG NHÂN":{
                         data = db.read();
                         data.sort(Worker.WorkerIdComparator);
-//                        adapter = new WorkerAdapter(data);
+                        adapter = new WorkerAdapter(data);
                         rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "HỌ":{
                         data = db.read();
                         data.sort(Worker.WorkerFirstNameComparator);
-//                        adapter = new WorkerAdapter(data);
+                        adapter = new WorkerAdapter(data);
                         rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "TÊN":{
                         data = db.read();
                         data.sort(Worker.WorkerLastNameComparator);
-//                        adapter = new WorkerAdapter(data);
+                        adapter = new WorkerAdapter(data);
                         rDanhSach.setAdapter(adapter);
                         break;
                     }
                     case "PHÂN XƯỞNG":{
                         data = db.read();
                         data.sort(Worker.WorkerFactoryIdComparator);
-//                        adapter = new WorkerAdapter(data);
+                        adapter = new WorkerAdapter(data);
                         rDanhSach.setAdapter(adapter);
                         break;
                     }

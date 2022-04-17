@@ -19,10 +19,9 @@ public class Product implements Serializable {
 
     public static Comparator<Product> ProductNameComparator = new Comparator<Product>() {
         public int compare(Product p1, Product p2) {
-
-            String name1 = p1.getTenSP().toUpperCase();
-            String name2 = p2.getTenSP().toUpperCase();
-            return name2.compareTo(name1);
+            String name1 = p1.getTenSP().trim().toUpperCase();
+            String name2 = p2.getTenSP().trim().toUpperCase();
+            return name1.compareTo(name2);
         }
     };
 

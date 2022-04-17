@@ -79,12 +79,14 @@ public class ListProductFragment extends Fragment {
                         Collections.sort(dataSP, Product.ProductNameComparator);
                         adapterSP=new ProductAdapter(viewNow.getContext(), R.layout.product_info_item,dataSP);
                         rvDanhSachSP.setAdapter(adapterSP);
+                        break;
                     }
                     case "ĐƠN GIÁ":{
                         dataSP=dbSP.readProduct();
                         Collections.sort(dataSP, Product.ProductPriceComparator);
                         adapterSP=new ProductAdapter(viewNow.getContext(), R.layout.product_info_item,dataSP);
                         rvDanhSachSP.setAdapter(adapterSP);
+                        break;
                     }
                     default:{
                         break;

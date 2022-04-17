@@ -155,6 +155,9 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.WorkerView
                         {
                             dataOld.remove(wk);
                             data = dataOld;
+                            NavController navController = Navigation.findNavController(viewNow);
+                            navController.popBackStack();
+                            navController.navigate(R.id.listWorkerFragment);
                             notifyDataSetChanged();
                             alert.dismiss();
                         }

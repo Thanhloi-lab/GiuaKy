@@ -18,6 +18,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -146,6 +147,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 else
                 {
                     data=dataOld=db.readProduct();
+                    NavController navController = Navigation.findNavController(viewNow);
+                    navController.popBackStack();
+                    navController.navigate(R.id.listProductFragment);
                     notifyDataSetChanged();
                     dialog.dismiss();
                 }

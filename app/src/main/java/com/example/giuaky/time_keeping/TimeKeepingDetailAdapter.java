@@ -30,6 +30,8 @@ import com.example.giuaky.R;
 import com.example.giuaky.product.Product;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TimeKeepingDetailAdapter extends ArrayAdapter<TimeKeepingDetailViewModel>  {
     Context context;
@@ -127,18 +129,18 @@ public class TimeKeepingDetailAdapter extends ArrayAdapter<TimeKeepingDetailView
         btnConfirmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timeKeepingDetailDatabase.delete(item.getTime_keeping_id(),item.getProduct_id());
-                dialog.dismiss();
+                    timeKeepingDetailDatabase.delete(item.getTime_keeping_id(),item.getProduct_id());
+                    dialog.dismiss();
 
-                for (TimeKeepingDetailViewModel timeKeepingViewModel: data
-                     ) {
-                    if(timeKeepingViewModel.getTime_keeping_id() == item.getTime_keeping_id()
-                        && timeKeepingViewModel.getProduct_id() == item.getProduct_id())
-                        data.remove(timeKeepingViewModel);
-                }
+                    for (TimeKeepingDetailViewModel timeKeepingViewModel: data
+                    ) {
+                        if(timeKeepingViewModel.getTime_keeping_id() == item.getTime_keeping_id()
+                                && timeKeepingViewModel.getProduct_id() == item.getProduct_id())
+                            data.remove(timeKeepingViewModel);
+                    }
 
-                notifyDataSetChanged();
-                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
             }
         });
 

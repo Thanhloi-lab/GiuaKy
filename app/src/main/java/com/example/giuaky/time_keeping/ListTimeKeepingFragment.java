@@ -228,7 +228,6 @@ public class ListTimeKeepingFragment extends Fragment {
     }
     private void setDateTimeField(TextView tv) {
         Calendar newCalendar = dateSelected;
-
         datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -237,6 +236,7 @@ public class ListTimeKeepingFragment extends Fragment {
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();
         tv.setText(dateFormatter.format(dateSelected.getTime()));
 

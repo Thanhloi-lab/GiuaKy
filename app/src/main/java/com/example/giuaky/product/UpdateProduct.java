@@ -95,7 +95,7 @@ public class UpdateProduct extends Fragment {
                     {
                         openDialog(Gravity.CENTER,view,1);
                     }
-                    else if(Integer.parseInt(etProductPrice.getText().toString().trim())<1000)
+                    else if(Float.parseFloat(etProductPrice.getText().toString().trim())<1000)
                     {
                         openDialog(Gravity.CENTER,view,2);
                     }

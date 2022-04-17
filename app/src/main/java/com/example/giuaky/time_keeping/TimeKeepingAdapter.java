@@ -141,6 +141,7 @@ public class TimeKeepingAdapter extends ArrayAdapter<TimeKeepingViewModel>  {
                     Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
                 }else
                 {
+                    openDialog(Gravity.CENTER,view);
                     Toast.makeText(context, "Không thể xóa", Toast.LENGTH_SHORT).show();
                 }
 
@@ -158,4 +159,38 @@ public class TimeKeepingAdapter extends ArrayAdapter<TimeKeepingViewModel>  {
         dialog.show();
 
     }
+
+    private void openDialog(int gravity,View view)
+    {
+        final Dialog dialog=new Dialog(view.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.message_box);
+
+        Window window=dialog.getWindow();
+        if(window==null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable((Color.TRANSPARENT)));
+        WindowManager.LayoutParams winLayoutParams=window.getAttributes();
+        winLayoutParams.gravity=gravity;
+        window.setAttributes(winLayoutParams);
+
+        Button btnOK =dialog.findViewById(R.id.btnCancelAlert);
+        TextView text=dialog.findViewById(R.id.tv_info_alert);
+        text.setText("Không thể xóa chấm công đã có chi tiết chấm công!!!");
+
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
+
 }

@@ -50,7 +50,7 @@
                 android:id="@+id/print_report_button"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:background="@drawable/btn_edit"
+                android:background="@drawable/btn_edit_custom"
                 android:text="@string/print_salary"
                 android:textColor="@color/white"
                 android:layout_marginRight="10dp"
